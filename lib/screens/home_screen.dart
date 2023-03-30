@@ -28,12 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             video_card(
-              bgColor: cjBlack,
+              bgColor: const Color(0XFF0F0F0F),
               textColor: cjWhite,
               thumbUrl: 'assets/images/cj_thumb_1.png',
             ),
             video_card(
-              bgColor: Colors.black.withOpacity(0.9),
+              bgColor: const Color(0XFF0F0F0F),
               textColor: cjWhite,
               thumbUrl: 'assets/images/cj_thumb_2.png',
             ),
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               thumbUrl: 'assets/images/cj_thumb_3.png',
             ),
             video_card(
-              bgColor: Colors.black.withOpacity(0.9),
+              bgColor: const Color(0XFF0F0F0F),
               textColor: cjWhite,
               thumbUrl: 'assets/images/cj_thumb_4.png',
             ),
