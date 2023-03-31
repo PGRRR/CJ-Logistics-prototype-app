@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final constants = Constants();
   final screens = [
     const VideoScreen(),
-    VideoPlayerApp(),
+    const VideoPlayerScreen(),
     const UserScreen(),
   ];
   @override

@@ -32,6 +32,7 @@ class _video_cardState extends State<video_card> {
             InkWell(
               onTap: () {
                 showModalBottomSheet(
+                  backgroundColor: Colors.black.withOpacity(0.5),
                   context: context,
                   isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
@@ -44,7 +45,9 @@ class _video_cardState extends State<video_card> {
                       return Align(
                         alignment: Alignment.center,
                         child: Container(
+                          alignment: Alignment.center,
                           height: 300,
+                          child: const VideoPlayerScreen(),
                         ),
                       );
                     },
