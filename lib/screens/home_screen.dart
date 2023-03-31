@@ -1,5 +1,10 @@
-import 'package:cj_app/widgets/video_card.dart';
+import 'package:cj_app/screens/list_screen.dart';
+import 'package:cj_app/screens/user_screen.dart';
+import 'package:cj_app/screens/video_screen.dart';
+import 'package:cj_app/widgets/video_player_app.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,55 +13,51 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final cjRed = const Color(0XFFEF151E);
-  final cjYellow = const Color(0XFFFF9700);
-  final cjBlue = const Color(0XFF006ECD);
-  final cjBlack = const Color(0XFF000000);
-  final cjWhite = const Color(0XFFFFFFFF);
-  final cjGray = const Color(0XFF97999b);
+  int _selectedIndex = 0;
+  final constants = Constants();
+  final screens = [
+    const VideoScreen(),
+    VideoPlayerApp(),
+    const UserScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: Image.asset(
           'assets/images/cj_lh.png',
           width: 153.3,
           height: 62.6,
         ),
+        backgroundColor: Colors.blue,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            video_card(
-              bgColor: const Color(0XFF0F0F0F),
-              textColor: cjWhite,
-              thumbUrl: 'assets/images/cj_thumb_1.png',
-            ),
-            video_card(
-              bgColor: const Color(0XFF0F0F0F),
-              textColor: cjWhite,
-              thumbUrl: 'assets/images/cj_thumb_2.png',
-            ),
-            video_card(
-              bgColor: cjBlack,
-              textColor: cjWhite,
-              thumbUrl: 'assets/images/cj_thumb_3.png',
-            ),
-            video_card(
-              bgColor: const Color(0XFF0F0F0F),
-              textColor: cjWhite,
-              thumbUrl: 'assets/images/cj_thumb_4.png',
-            ),
-          ],
-        ),
-      ),
+      body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: constants.kCjWhite,
+        selectedItemColor: constants.kCjBlue,
+        unselectedItemColor: constants.kCjGray,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.video_file_outlined), label: '소개 영상'),
-          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: '기본 홈'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: '설정'),
+            icon: Icon(Icons.video_file_outlined),
+            label: '소개 영상',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt),
+            label: '리스트',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle_outlined),
+            label: '유저',
+          ),
         ],
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }
