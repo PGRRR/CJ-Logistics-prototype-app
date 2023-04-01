@@ -22,14 +22,15 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        fontFamily: 'cj',
         colorScheme: ColorScheme(
-          background: constants.kYtGray,
-          onBackground: constants.kYtGray,
-          brightness: Brightness.dark,
-          primary: constants.kCjBlack,
-          onPrimary: constants.kCjBlack,
-          secondary: constants.kCjBlack,
-          onSecondary: constants.kCjBlack,
+          background: constants.kCjWhite,
+          onBackground: constants.kCjWhite,
+          brightness: Brightness.light,
+          primary: constants.kCjBlue,
+          onPrimary: constants.kCjBlue,
+          secondary: constants.kCjWhite,
+          onSecondary: constants.kCjWhite,
           error: constants.kCjRed,
           onError: constants.kCjRed,
           surface: constants.kCjBlue,
@@ -37,8 +38,22 @@ class _AppState extends State<App> {
         ),
         textTheme: TextTheme(
           titleLarge: TextStyle(
+            fontSize: 20,
+            color: constants.kCjWhite,
+            fontWeight: FontWeight.w600
+          ),
+          titleMedium: TextStyle(
+            fontSize: 16,
+            color: constants.kCjWhite,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 16,
             color: constants.kCjBlack,
           ),
+          bodyMedium: TextStyle(
+            fontSize: 14,
+            color: constants.kCjGray,
+          )
         ),
       ),
       home: const MainScreen(),

@@ -2,8 +2,6 @@ import 'package:cj_app/screens/camera_screen.dart';
 import 'package:cj_app/screens/home_screen.dart';
 import 'package:cj_app/screens/news_screen.dart';
 import 'package:cj_app/screens/shorts_screen.dart';
-import 'package:cj_app/screens/user_screen.dart';
-import 'package:cj_app/screens/video_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
@@ -17,12 +15,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final constants = Constants();
-  final screens = [
+  final List<StatefulWidget> screens = [
     HomeScreen(),
     const ShortsScreen(),
     const CameraScreen(),
     const NewsScreen(),
-    const UserScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,40 +27,56 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: Image.asset(
-          'assets/images/cj_lh.png',
-          width: 153.3,
-          height: 62.6,
+          'assets/images/cj_logo_kor.png',
+          width: 209.6,
+          height: 47,
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: constants.kCjWhite,
       ),
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: constants.kCjWhite,
         selectedItemColor: constants.kCjBlue,
-        unselectedItemColor: constants.kCjGray,
+        unselectedItemColor: constants.kCjBlack,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: '기본 홈',
+            icon: Icon(
+              Icons.home_filled,
+              size: 45,
+            ),
+            label: 'HOME',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.video_library_outlined),
-            label: '쇼츠',
+            icon: Icon(
+              Icons.video_library_outlined,
+              size: 45,
+            ),
+            label: 'SHORTS',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: '카메라',
+            icon: Icon(
+              Icons.camera_alt_outlined,
+              size: 45,
+            ),
+            label: 'CAMERA',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.newspaper),
-            label: '뉴스',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.supervised_user_circle_outlined),
-            label: '내 정보',
+            icon: Icon(
+              Icons.language_sharp,
+              size: 45,
+            ),
+            label: 'NEWS',
           ),
         ],
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 15,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 15,
+        ),
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {

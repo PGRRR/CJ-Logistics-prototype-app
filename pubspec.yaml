@@ -95,3 +95,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: cj
+      fonts:
+        - asset: assets/fonts/cj_medium.ttf
+        - asset: assets/fonts/cj_bold.ttf
+          weight: 700
