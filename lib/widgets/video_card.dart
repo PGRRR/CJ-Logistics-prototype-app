@@ -46,8 +46,7 @@ class _video_cardState extends State<video_card> {
                         alignment: Alignment.center,
                         child: Container(
                           alignment: Alignment.center,
-                          height: 300,
-                          child: const VideoPlayerScreen(),
+                          child: const VideoPlayerScreen(videoAssetPath: 'cj_video_1.mp4',),
                         ),
                       );
                     },

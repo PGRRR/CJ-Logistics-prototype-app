@@ -10,19 +10,20 @@ class UserScreen extends StatefulWidget {
 
 class _UserScreenState extends State<UserScreen> {
   final constants = Constants();
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: constants.kYtGray,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Icon(
                 Icons.supervised_user_circle_outlined,
-                size: 250,
+                size: 100,
+                color: constants.kCjWhite,
               ),
             ],
           ),

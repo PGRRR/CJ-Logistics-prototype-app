@@ -1,9 +1,10 @@
-import 'package:cj_app/screens/home_screen.dart';
+import 'package:cj_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'utils/constants.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());
 }
 
@@ -40,7 +41,7 @@ class _AppState extends State<App> {
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }
