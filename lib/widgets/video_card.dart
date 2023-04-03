@@ -1,4 +1,4 @@
-import 'package:cj_app/widgets/video_player_app.dart';
+import 'package:cj_app/widgets/shorts_player.dart';
 import 'package:flutter/material.dart';
 
 class video_card extends StatefulWidget {
@@ -46,7 +46,7 @@ class _video_cardState extends State<video_card> {
                         alignment: Alignment.center,
                         child: Container(
                           alignment: Alignment.center,
-                          child: const VideoPlayerScreen(videoAssetPath: 'cj_video_1.mp4',),
+                          child: const ShortsPlayer(videoAssetPath: 'cj_video_1.mp4',),
                         ),
                       );
                     },

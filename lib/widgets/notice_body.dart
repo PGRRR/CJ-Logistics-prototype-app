@@ -12,7 +12,7 @@ class NoticeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 15,
+        vertical: 8,
       ),
       child: SizedBox(
         height: MediaQuery.of(context).size.width * 0.05,

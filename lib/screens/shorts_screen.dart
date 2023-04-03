@@ -1,48 +1,46 @@
-import 'package:cj_app/widgets/video_player_app.dart';
+import 'package:cj_app/widgets/shorts_player.dart';
 import 'package:flutter/material.dart';
 
 class ShortsScreen extends StatefulWidget {
-  const ShortsScreen({super.key});
+  const ShortsScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShortsScreen> createState() => _ShortsScreenState();
+  State createState() => _ShortsScreenState();
 }
 
 class _ShortsScreenState extends State<ShortsScreen> {
-  late PageController _pageController;
+  final PageController _pageController = PageController();
 
   final List<Widget> pages = [
-    const VideoPlayerScreen(
+    const ShortsPlayer(
       videoAssetPath: 'shorts_1.mp4',
     ),
-    const VideoPlayerScreen(
+    const ShortsPlayer(
       videoAssetPath: 'shorts_2.mp4',
     ),
-    const VideoPlayerScreen(
+    const ShortsPlayer(
       videoAssetPath: 'shorts_3.mp4',
     ),
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-    _pageController.addListener(() {
-      if (_pageController.page == pages.length - 1) {
-        _pageController.jumpToPage(0);
-      } else if (_pageController.page == 0) {
-        _pageController.jumpToPage(pages.length - 1);
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        scrollDirection: Axis.vertical,
-        controller: _pageController,
-        children: pages,
+      body: Container(
+        decoration: const BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20),
+          ),
+        ),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        clipBehavior: Clip.hardEdge,
+        child: PageView(
+          scrollDirection: Axis.vertical,
+          controller: _pageController,
+          children: pages,
+        ),
       ),
     );
   }

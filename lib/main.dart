@@ -38,16 +38,16 @@ class _AppState extends State<App> {
         ),
         textTheme: TextTheme(
           titleLarge: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             color: constants.kCjWhite,
             fontWeight: FontWeight.w600
           ),
           titleMedium: TextStyle(
-            fontSize: 16,
+            fontSize: 12,
             color: constants.kCjWhite,
           ),
           bodyLarge: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             color: constants.kCjBlack,
           ),
           bodyMedium: TextStyle(

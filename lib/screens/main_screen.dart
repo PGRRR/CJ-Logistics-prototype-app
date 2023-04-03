@@ -31,7 +31,35 @@ class _MainScreenState extends State<MainScreen> {
           width: 209.6,
           height: 47,
         ),
+        centerTitle: true,
         backgroundColor: constants.kCjWhite,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.notifications_none,
+            size: 30,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.search,
+              size: 30,
+              color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.person_outline,
+              size: 30,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -43,39 +71,39 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home_filled,
-              size: 45,
+              size: 35,
             ),
             label: 'HOME',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.video_library_outlined,
-              size: 45,
+              size: 35,
             ),
             label: 'SHORTS',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.camera_alt_outlined,
-              size: 45,
+              size: 35,
             ),
             label: 'CAMERA',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.language_sharp,
-              size: 45,
+              size: 35,
             ),
             label: 'NEWS',
           ),
         ],
         selectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 15,
+          fontSize: 12,
         ),
         unselectedLabelStyle: const TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 15,
+          fontSize: 12,
         ),
         currentIndex: _selectedIndex,
         onTap: (index) {

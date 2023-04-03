@@ -20,7 +20,7 @@ class NoticeHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.all(25),
+            padding: const EdgeInsets.all(18),
             child: Text(
               title,
               style: Theme.of(context).textTheme.titleLarge,
