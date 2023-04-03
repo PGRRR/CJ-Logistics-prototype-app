@@ -1,27 +1,51 @@
 import 'dart:async';
 
+import 'package:cj_app/widgets/tag.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class ShortsPlayer extends StatefulWidget {
-  final String videoAssetPath;
+  final String videoAssetPath,
+      uploadId,
+      uploadEmail,
+      videoDesc,
+      videoLike,
+      videoComment;
+  final List<String> tagList;
 
-  const ShortsPlayer({Key? key, required this.videoAssetPath})
+  const ShortsPlayer(
+      {Key? key,
+      required this.videoAssetPath,
+      required this.uploadId,
+      required this.uploadEmail,
+      required this.videoDesc,
+      required this.videoLike,
+      required this.videoComment,
+      required this.tagList})
       : super(key: key);
 
   @override
-  _ShortsPlayerState createState() =>
-      _ShortsPlayerState(videoAssetPath);
+  _ShortsPlayerState createState() => _ShortsPlayerState(videoAssetPath,
+      uploadId, uploadEmail, videoDesc, videoLike, videoComment, tagList);
 }
 
 class _ShortsPlayerState extends State<ShortsPlayer> {
-  final String videoAssetPath;
+  final String videoAssetPath,
+      uploadId,
+      uploadEmail,
+      videoDesc,
+      videoLike,
+      videoComment;
+  final List<String> tagList;
   late Color playBtnC = Colors.transparent;
   late Color playBtnBgc = Colors.transparent;
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
+  bool _isFavClicked = false;
+  bool _isBookClicked = false;
 
-  _ShortsPlayerState(this.videoAssetPath);
+  _ShortsPlayerState(this.videoAssetPath, this.uploadId, this.uploadEmail,
+      this.videoDesc, this.videoLike, this.videoComment, this.tagList);
 
   @override
   void initState() {
@@ -138,23 +162,39 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                       children: [
                         Row(
                           children: [
-                            const Icon(
-                              Icons.supervised_user_circle,
-                              size: 70,
-                              color: Colors.white,
+                            Padding(
+                              padding: const EdgeInsets.only(right: 15, bottom: 10, left: 5),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 3,
+                                    strokeAlign: BorderSide.strokeAlignOutside
+                                  ),
+                                ),
+                                width: 60,
+                                height: 60,
+                                clipBehavior: Clip.hardEdge,
+                                child: Image.asset(
+                                  'assets/images/cj_splash_logo.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '아이디 님',
+                                  '$uploadId 님',
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 const SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  'email@cj.net',
+                                  uploadEmail,
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                 ),
@@ -162,58 +202,27 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                             ),
                           ],
                         ),
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey.shade600),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
-                                child: Text(
-                                  '#콘크리트',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Row(
+                            children: [
+                              for (var tag in tagList)
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Tag(
+                                    tag: tag,
+                                  ),
                                 ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey.shade600),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
-                                child: Text(
-                                  '#콘크리트',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey.shade600),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
-                                child: Text(
-                                  '#콘크리트',
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Container(
+                          height: 80,
                           width: 300,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Text(
-                              'CJ대한통운 LoIS 포워더스 한 눈에 알아보기\n빠른 자동 견적 확인부터\n쉬운 운송 관리 화면, 실시간 알림 서비스까지\n복잡하고 어려운 국제물류도 CJ대한통운과 함께!',
+                              videoDesc,
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
@@ -222,13 +231,27 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                     ),
                     Column(
                       children: [
-                        const Icon(
-                          Icons.favorite_border,
-                          size: 35,
-                          color: Colors.white,
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            setState(() {
+                              _isFavClicked = !_isFavClicked;
+                            });
+                          },
+                          icon: _isFavClicked
+                              ? Icon(
+                                  Icons.favorite,
+                                  size: 35,
+                                  color: Theme.of(context).colorScheme.primary,
+                                )
+                              : const Icon(
+                                  Icons.favorite_border,
+                                  size: 35,
+                                  color: Colors.white,
+                                ),
                         ),
                         Text(
-                          '#',
+                          videoLike,
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const SizedBox(
@@ -240,20 +263,30 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                           color: Colors.white,
                         ),
                         Text(
-                          '#',
+                          videoComment,
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const Icon(
-                          Icons.bookmark_border,
-                          size: 35,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          '#',
-                          style: Theme.of(context).textTheme.titleMedium,
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            setState(() {
+                              _isBookClicked = !_isBookClicked;
+                            });
+                          },
+                          icon: _isBookClicked
+                              ? Icon(
+                                  Icons.bookmark,
+                                  size: 35,
+                                  color: Theme.of(context).colorScheme.primary,
+                                )
+                              : const Icon(
+                                  Icons.bookmark_border,
+                                  size: 35,
+                                  color: Colors.white,
+                                ),
                         ),
                         const SizedBox(
                           height: 10,
@@ -264,7 +297,40 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                 ),
               ],
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border:
+                    Border.all(color: Theme.of(context).colorScheme.primary),
+                color: Colors.white.withOpacity(0.5),
+              ),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'SEARCH',
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5),
+                      ),
+                    ),
+                    Icon(
+                      Icons.search,
+                      color: Theme.of(context).colorScheme.primary,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

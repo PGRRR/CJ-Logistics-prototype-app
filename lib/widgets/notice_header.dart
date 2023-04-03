@@ -1,3 +1,4 @@
+import 'package:cj_app/screens/shorts_screen.dart';
 import 'package:flutter/material.dart';
 
 class NoticeHeader extends StatelessWidget {
