@@ -5,12 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class ShortsPlayer extends StatefulWidget {
-  final String videoAssetPath,
-      uploadId,
-      uploadEmail,
-      videoDesc,
-      videoLike,
-      videoComment;
+  final String videoAssetPath, uploadId, uploadEmail, videoDesc, videoComment;
+  final int videoLike;
   final List<String> tagList;
 
   const ShortsPlayer(
@@ -25,37 +21,28 @@ class ShortsPlayer extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ShortsPlayerState createState() => _ShortsPlayerState(videoAssetPath,
-      uploadId, uploadEmail, videoDesc, videoLike, videoComment, tagList);
+  _ShortsPlayerState createState() => _ShortsPlayerState();
 }
 
 class _ShortsPlayerState extends State<ShortsPlayer> {
-  final String videoAssetPath,
-      uploadId,
-      uploadEmail,
-      videoDesc,
-      videoLike,
-      videoComment;
-  final List<String> tagList;
   late Color playBtnC = Colors.transparent;
   late Color playBtnBgc = Colors.transparent;
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
+  late int videoLike;
   bool _isFavClicked = false;
   bool _isBookClicked = false;
 
-  _ShortsPlayerState(this.videoAssetPath, this.uploadId, this.uploadEmail,
-      this.videoDesc, this.videoLike, this.videoComment, this.tagList);
-
   @override
   void initState() {
+    super.initState();
     // VideoPlayerController를 저장하기 위한 변수를 만듭니다. VideoPlayerController는
     // asset, 파일, 인터넷 등의 영상들을 제어하기 위해 다양한 생성자를 제공합니다.
     // _controller = VideoPlayerController.network(
     //   'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
     // );
     _controller = VideoPlayerController.asset(
-      ('assets/videos/$videoAssetPath'),
+      ('assets/videos/${widget.videoAssetPath}'),
     );
 
     // 컨트롤러를 초기화하고 추후 사용하기 위해 Future를 변수에 할당합니다.
@@ -64,10 +51,10 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
     // 비디오를 반복 재생하기 위해 컨트롤러를 사용합니다.
     _controller.setLooping(true);
 
-    super.initState();
     _controller.play();
     playBtnC = Colors.transparent;
     playBtnBgc = Colors.transparent;
+    videoLike = widget.videoLike;
   }
 
   @override
@@ -166,16 +153,17 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(right: 15, bottom: 10, left: 5),
+                              padding: const EdgeInsets.only(
+                                  right: 15, bottom: 10, left: 5),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.white,
-                                    width: 3,
-                                    strokeAlign: BorderSide.strokeAlignOutside
-                                  ),
+                                      color: Colors.white,
+                                      width: 3,
+                                      strokeAlign:
+                                          BorderSide.strokeAlignOutside),
                                 ),
                                 width: 60,
                                 height: 60,
@@ -190,14 +178,14 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  '$uploadId 님',
+                                  '${widget.uploadId} 님',
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 const SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  uploadEmail,
+                                  widget.uploadEmail,
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                 ),
@@ -209,7 +197,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                           padding: const EdgeInsets.symmetric(vertical: 5),
                           child: Row(
                             children: [
-                              for (var tag in tagList)
+                              for (var tag in widget.tagList)
                                 Padding(
                                   padding: const EdgeInsets.only(right: 10),
                                   child: Tag(
@@ -225,7 +213,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Text(
-                              videoDesc,
+                              widget.videoDesc,
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                           ),
@@ -239,6 +227,11 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                           onPressed: () {
                             setState(() {
                               _isFavClicked = !_isFavClicked;
+                              if (_isFavClicked) {
+                                videoLike += 1;
+                              } else {
+                                videoLike += -1;
+                              }
                             });
                           },
                           icon: _isFavClicked
@@ -254,7 +247,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                                 ),
                         ),
                         Text(
-                          videoLike,
+                          '$videoLike',
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const SizedBox(
@@ -266,7 +259,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                           color: Colors.white,
                         ),
                         Text(
-                          videoComment,
+                          widget.videoComment,
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         const SizedBox(
@@ -301,7 +294,6 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
               ],
             ),
           ),
-          
         ],
       ),
     );

@@ -5,6 +5,7 @@ import 'package:cj_app/widgets/shorts_thumb.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+  
   const HomeScreen({super.key});
 
   @override

@@ -1,9 +1,8 @@
-import 'package:cj_app/widgets/bottom_navi_bar.dart';
 import 'package:cj_app/widgets/shorts_player.dart';
 import 'package:flutter/material.dart';
 
 class ShortsScreen extends StatefulWidget {
-  final int shortsIndex;
+  final int? shortsIndex;
   const ShortsScreen({Key? key, required this.shortsIndex}) : super(key: key);
 
   @override
@@ -11,10 +10,10 @@ class ShortsScreen extends StatefulWidget {
 }
 
 class _ShortsScreenState extends State<ShortsScreen> {
-  final int shortsIndex;
+  final int? shortsIndex;
   final PageController _pageController;
   _ShortsScreenState(this.shortsIndex)
-      : _pageController = PageController(initialPage: shortsIndex);
+      : _pageController = PageController(initialPage: shortsIndex ?? 0);
 
   final List<Widget> pages = [
     const ShortsPlayer(
@@ -22,8 +21,8 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadId: '아이디1',
       uploadEmail: 'email1@cj.net',
       videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기\n\n\n\n\n\n\n\n\nasdasd',
-      videoLike: '10',
-      videoComment: '10',
+      videoLike: 104,
+      videoComment: '82',
       tagList: ['콘크리트', '건물', '해시태그'],
     ),
     const ShortsPlayer(
@@ -31,8 +30,8 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadId: '아이디2',
       uploadEmail: 'email2@cj.net',
       videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
-      videoLike: '10',
-      videoComment: '10',
+      videoLike: 75,
+      videoComment: '17',
       tagList: ['콘크리트', '건물', '해시태그'],
     ),
     const ShortsPlayer(
@@ -40,12 +39,11 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadId: '아이디3',
       uploadEmail: 'email3@cj.net',
       videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
-      videoLike: '10',
-      videoComment: '10',
+      videoLike: 84,
+      videoComment: '4',
       tagList: ['콘크리트', '건물', '해시태그'],
     ),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

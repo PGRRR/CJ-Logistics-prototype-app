@@ -17,8 +17,9 @@ class ShortsThumb extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const MainScreen(
+            builder: (context) => MainScreen(
               selectedIndex: 1,
+              shortsIndex: shortsIndex,
             ),
           ),
         );

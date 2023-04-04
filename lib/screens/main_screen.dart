@@ -8,30 +8,31 @@ import '../utils/constants.dart';
 
 class MainScreen extends StatefulWidget {
   final int selectedIndex;
-  const MainScreen({
-    super.key,
-    required this.selectedIndex,
-  });
+  int? shortsIndex;
+  MainScreen({super.key, required this.selectedIndex, this.shortsIndex});
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  late int? shortsIndex;
   final constants = Constants();
-  final List<StatefulWidget> screens = [
-    const HomeScreen(),
-    const ShortsScreen(
-      shortsIndex: 0,
-    ),
-    const CameraScreen(),
-    const NewsScreen(),
-  ];
+  late final List<StatefulWidget> screens;
 
   @override
   void initState() {
     super.initState();
     _selectedIndex = widget.selectedIndex; // 초기값 설정
+    shortsIndex = widget.shortsIndex ?? 0;
+    screens = [
+      const HomeScreen(),
+      ShortsScreen(
+        shortsIndex: shortsIndex,
+      ),
+      const CameraScreen(),
+      const NewsScreen(),
+    ];
   }
 
   @override

@@ -54,7 +54,7 @@ class _AppState extends State<App> {
               color: constants.kCjGray,
             )),
       ),
-      home: const MainScreen(
+      home: MainScreen(
         selectedIndex: 0,
       ),
     );
