@@ -1,18 +1,17 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:cj_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 
-class CameraScreen extends StatefulWidget {
-  const CameraScreen({super.key});
+class RecodeScreen extends StatefulWidget {
+  const RecodeScreen({super.key});
   @override
-  _CameraScreenState createState() => _CameraScreenState();
+  _RecodeScreenState createState() => _RecodeScreenState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
+class _RecodeScreenState extends State<RecodeScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
   bool _isFlashOn = false;
@@ -283,15 +282,7 @@ class _CameraScreenState extends State<CameraScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   TextButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => MainScreen(
-                                                  selectedIndex: 1,
-                                                )),
-                                      );
-                                    },
+                                    onPressed: () {},
                                     child: Text(
                                       '동영상',
                                       style: Theme.of(context)

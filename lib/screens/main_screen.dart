@@ -67,16 +67,108 @@ class _MainScreenState extends State<MainScreen> {
                     color: Colors.black,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.person_outline,
-                    size: 30,
-                    color: Colors.black,
-                  ),
+                Builder(
+                  builder: (BuildContext context) {
+                    return IconButton(
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      icon: const Icon(
+                        Icons.person_outline,
+                        size: 30,
+                        color: Colors.black,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
+      drawer: Drawer(
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SizedBox(
+                height: 100,
+                child: DrawerHeader(
+                  margin: const EdgeInsets.only(bottom: 1),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  padding: EdgeInsets.zero,
+                  child: const Center(
+                    child: Text(
+                      'MY PAGE',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              UserAccountsDrawerHeader(
+                accountName: const Text('아이디 님'),
+                accountEmail: const Text('email@cj.net'),
+                currentAccountPicture: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  backgroundImage:
+                      AssetImage('assets/images/cj_splash_logo.png'),
+                ),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              const ListTile(
+                leading: Icon(Icons.attach_money),
+                title: Text('CREDIT'),
+                trailing: Text('50,000'),
+              ),
+              ExpansionTile(
+                title: const Text(
+                  '기본 설정',
+                  style: TextStyle(color: Colors.black),
+                ),
+                collapsedBackgroundColor: Colors.grey.withOpacity(0.3),
+                children: const [
+                  ListTile(
+                    title: Text('닉네임 변경'),
+                  ),
+                  ListTile(
+                    title: Text('이메일 변경'),
+                  ),
+                  ListTile(
+                    title: Text('비밀번호 변경'),
+                  ),
+                  ListTile(
+                    title: Text('알림 설정'),
+                  ),
+                ],
+              ),
+              ListTile(
+                title: const Text('스크랩'),
+                tileColor: Colors.grey.withOpacity(0.3),
+              ),
+              ListTile(
+                title: const Text('내가 쓴 게시물'),
+                tileColor: Colors.grey.withOpacity(0.3),
+              ),
+              ListTile(
+                title: const Text('내가 쓴 댓글'),
+                tileColor: Colors.grey.withOpacity(0.3),
+              ),
+              ListTile(
+                title: const Text('문의하기'),
+                tileColor: Colors.grey.withOpacity(0.3),
+              ),
+              ListTile(
+                title: const Text('로그아웃'),
+                tileColor: Colors.grey.withOpacity(0.3),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
