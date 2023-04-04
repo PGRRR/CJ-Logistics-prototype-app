@@ -5,7 +5,7 @@ import 'package:cj_app/widgets/shorts_thumb.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -16,6 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var thumbList = [
+      'shorts_thumb_1.webp',
+      'shorts_thumb_2.webp',
+      'shorts_thumb_3.webp',
+    ];
     return Scaffold(
       backgroundColor: constants.kCjWhite,
       body: Padding(
@@ -32,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const NoticeHeader(
                 title: '공지사항',
+                screenIndex: 0,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -83,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const NoticeHeader(
                 title: '인기 SHORTS',
+                screenIndex: 1,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -110,19 +117,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: const [
-                        ShortsThumb(
-                          name: 'short_thumb_1.webp',
-                        ),
-                        ShortsThumb(
-                          name: 'short_thumb_1.webp',
-                        ),
-                        ShortsThumb(
-                          name: 'short_thumb_1.webp',
-                        ),
-                        ShortsThumb(
-                          name: 'short_thumb_1.webp',
-                        ),
+                      children: [
+                        for (var thumb in thumbList)
+                          ShortsThumb(
+                            name: thumb,
+                            shortsIndex: thumbList.indexOf(thumb),
+                          ),
                       ],
                     ),
                   ),
@@ -133,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const NoticeHeader(
                 title: '뉴스',
+                screenIndex: 3,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -259,7 +260,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const SizedBox(
                                 height: 10,
-                              ),Flexible(
+                              ),
+                              Flexible(
                                 child: Text(
                                   'CJ그룹, 튀르키예 강진 피해 구호성금 3억원 지원',
                                   style: Theme.of(context).textTheme.bodyMedium,

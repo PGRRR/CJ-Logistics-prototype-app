@@ -7,7 +7,11 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final int selectedIndex;
+  const MainScreen({
+    super.key,
+    required this.selectedIndex,
+  });
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -16,51 +20,62 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   final constants = Constants();
   final List<StatefulWidget> screens = [
-    HomeScreen(),
-    const ShortsScreen(),
+    const HomeScreen(),
+    const ShortsScreen(
+      shortsIndex: 0,
+    ),
     const CameraScreen(),
     const NewsScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.selectedIndex; // 초기값 설정
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        title: Image.asset(
-          'assets/images/cj_logo_kor.png',
-          width: 209.6,
-          height: 47,
-        ),
-        centerTitle: true,
-        backgroundColor: constants.kCjWhite,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.notifications_none,
-            size: 30,
-            color: Colors.black,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
-              size: 30,
-              color: Colors.black,
+      appBar: _selectedIndex == 1
+          ? null
+          : AppBar(
+              title: Image.asset(
+                'assets/images/cj_logo_kor.png',
+                width: 209.6,
+                height: 47,
+              ),
+              centerTitle: true,
+              backgroundColor: constants.kCjWhite,
+              elevation: 0,
+              leading: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.notifications_none,
+                  size: 30,
+                  color: Colors.black,
+                ),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.search,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.person_outline,
+                    size: 30,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.person_outline,
-              size: 30,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

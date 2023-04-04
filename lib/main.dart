@@ -29,34 +29,34 @@ class _AppState extends State<App> {
           brightness: Brightness.light,
           primary: constants.kCjBlue,
           onPrimary: constants.kCjBlue,
-          secondary: constants.kCjWhite,
-          onSecondary: constants.kCjWhite,
+          secondary: constants.kCjBlack,
+          onSecondary: constants.kCjBlack,
           error: constants.kCjRed,
           onError: constants.kCjRed,
-          surface: constants.kCjBlue,
-          onSurface: constants.kCjBlue,
+          surface: constants.kCjYellow,
+          onSurface: constants.kCjYellow,
         ),
         textTheme: TextTheme(
-          titleLarge: TextStyle(
-            fontSize: 18,
-            color: constants.kCjWhite,
-            fontWeight: FontWeight.w600
-          ),
-          titleMedium: TextStyle(
-            fontSize: 12,
-            color: constants.kCjWhite,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 14,
-            color: constants.kCjBlack,
-          ),
-          bodyMedium: TextStyle(
-            fontSize: 14,
-            color: constants.kCjGray,
-          )
-        ),
+            titleLarge: TextStyle(
+                fontSize: 18,
+                color: constants.kCjWhite,
+                fontWeight: FontWeight.w600),
+            titleMedium: TextStyle(
+              fontSize: 12,
+              color: constants.kCjWhite,
+            ),
+            bodyLarge: TextStyle(
+              fontSize: 14,
+              color: constants.kCjBlack,
+            ),
+            bodyMedium: TextStyle(
+              fontSize: 14,
+              color: constants.kCjGray,
+            )),
       ),
-      home: const MainScreen(),
+      home: const MainScreen(
+        selectedIndex: 0,
+      ),
     );
   }
 }

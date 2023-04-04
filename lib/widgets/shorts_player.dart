@@ -105,11 +105,14 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                   future: _initializeVideoPlayerFuture,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {
-                      return Center(
-                        child: AspectRatio(
-                          aspectRatio: _controller.value.aspectRatio,
-                          child: VideoPlayer(_controller),
-                        ),
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          AspectRatio(
+                            aspectRatio: _controller.value.aspectRatio,
+                            child: VideoPlayer(_controller),
+                          ),
+                        ],
                       );
                     } else {
                       return const Center(child: CircularProgressIndicator());
@@ -298,39 +301,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border:
-                    Border.all(color: Theme.of(context).colorScheme.primary),
-                color: Colors.white.withOpacity(0.5),
-              ),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'SEARCH',
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.5),
-                      ),
-                    ),
-                    Icon(
-                      Icons.search,
-                      color: Theme.of(context).colorScheme.primary,
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
+          
         ],
       ),
     );

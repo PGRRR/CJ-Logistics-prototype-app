@@ -1,15 +1,20 @@
+import 'package:cj_app/widgets/bottom_navi_bar.dart';
 import 'package:cj_app/widgets/shorts_player.dart';
 import 'package:flutter/material.dart';
 
 class ShortsScreen extends StatefulWidget {
-  const ShortsScreen({Key? key}) : super(key: key);
+  final int shortsIndex;
+  const ShortsScreen({Key? key, required this.shortsIndex}) : super(key: key);
 
   @override
-  State createState() => _ShortsScreenState();
+  State createState() => _ShortsScreenState(shortsIndex);
 }
 
 class _ShortsScreenState extends State<ShortsScreen> {
-  final PageController _pageController = PageController();
+  final int shortsIndex;
+  final PageController _pageController;
+  _ShortsScreenState(this.shortsIndex)
+      : _pageController = PageController(initialPage: shortsIndex);
 
   final List<Widget> pages = [
     const ShortsPlayer(
@@ -44,20 +49,60 @@ class _ShortsScreenState extends State<ShortsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(20),
-          ),
-        ),
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        clipBehavior: Clip.hardEdge,
-        child: PageView(
-          scrollDirection: Axis.vertical,
-          controller: _pageController,
-          children: pages,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 70),
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              clipBehavior: Clip.hardEdge,
+              child: PageView(
+                scrollDirection: Axis.vertical,
+                controller: _pageController,
+                children: pages,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border:
+                      Border.all(color: Theme.of(context).colorScheme.primary),
+                  color: Colors.white.withOpacity(0.5),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'SEARCH',
+                        style: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.5),
+                        ),
+                      ),
+                      Icon(
+                        Icons.search,
+                        color: Theme.of(context).colorScheme.primary,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
