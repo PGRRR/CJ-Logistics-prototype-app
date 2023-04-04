@@ -25,34 +25,35 @@ class _AppState extends State<App> {
         fontFamily: 'cj',
         colorScheme: ColorScheme(
           background: constants.kCjWhite,
-          onBackground: constants.kCjWhite,
+          onBackground: constants.kCjBlack,
           brightness: Brightness.light,
           primary: constants.kCjBlue,
           onPrimary: constants.kCjBlue,
-          secondary: constants.kCjBlack,
-          onSecondary: constants.kCjBlack,
+          secondary: constants.kCjGray,
+          onSecondary: constants.kCjGray,
           error: constants.kCjRed,
           onError: constants.kCjRed,
           surface: constants.kCjYellow,
           onSurface: constants.kCjYellow,
         ),
         textTheme: TextTheme(
-            titleLarge: TextStyle(
-                fontSize: 18,
-                color: constants.kCjWhite,
-                fontWeight: FontWeight.w600),
-            titleMedium: TextStyle(
-              fontSize: 12,
+          titleLarge: TextStyle(
+              fontSize: 18,
               color: constants.kCjWhite,
-            ),
-            bodyLarge: TextStyle(
-              fontSize: 14,
-              color: constants.kCjBlack,
-            ),
-            bodyMedium: TextStyle(
-              fontSize: 14,
-              color: constants.kCjGray,
-            )),
+              fontWeight: FontWeight.w600),
+          titleMedium: TextStyle(
+            fontSize: 12,
+            color: constants.kCjWhite,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 14,
+            color: constants.kCjBlack,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 14,
+            color: constants.kCjGray,
+          ),
+        ),
       ),
       home: MainScreen(
         selectedIndex: 0,

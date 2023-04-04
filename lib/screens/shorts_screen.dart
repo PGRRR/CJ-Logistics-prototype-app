@@ -6,14 +6,11 @@ class ShortsScreen extends StatefulWidget {
   const ShortsScreen({Key? key, required this.shortsIndex}) : super(key: key);
 
   @override
-  State createState() => _ShortsScreenState(shortsIndex);
+  State createState() => _ShortsScreenState();
 }
 
 class _ShortsScreenState extends State<ShortsScreen> {
-  final int? shortsIndex;
-  final PageController _pageController;
-  _ShortsScreenState(this.shortsIndex)
-      : _pageController = PageController(initialPage: shortsIndex ?? 0);
+  late final PageController _pageController;
 
   final List<Widget> pages = [
     const ShortsPlayer(
@@ -44,6 +41,13 @@ class _ShortsScreenState extends State<ShortsScreen> {
       tagList: ['콘크리트', '건물', '해시태그'],
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: widget.shortsIndex ?? 0);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

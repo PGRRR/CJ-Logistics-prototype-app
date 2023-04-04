@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: _selectedIndex == 1
+      appBar: _selectedIndex != 0
           ? null
           : AppBar(
               title: Image.asset(
