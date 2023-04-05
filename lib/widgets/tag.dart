@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class Tag extends StatelessWidget {
   final String tag;
   const Tag({
-    super.key, required this.tag,
+    super.key,
+    required this.tag,
   });
 
   @override

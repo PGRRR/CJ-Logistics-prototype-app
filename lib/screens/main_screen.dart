@@ -1,5 +1,6 @@
 import 'package:cj_app/screens/camera_screen.dart';
 import 'package:cj_app/screens/home_screen.dart';
+import 'package:cj_app/screens/new_camera_screen.dart';
 import 'package:cj_app/screens/news_screen.dart';
 import 'package:cj_app/screens/shorts_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
       ShortsScreen(
         shortsIndex: shortsIndex,
       ),
-      const CameraScreen(),
+      NewCameraScreen(),
       const NewsScreen(),
     ];
   }

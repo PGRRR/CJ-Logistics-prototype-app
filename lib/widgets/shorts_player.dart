@@ -21,7 +21,7 @@ class ShortsPlayer extends StatefulWidget {
       : super(key: key);
 
   @override
-  _ShortsPlayerState createState() => _ShortsPlayerState();
+  State<ShortsPlayer> createState() => _ShortsPlayerState();
 }
 
 class _ShortsPlayerState extends State<ShortsPlayer> {

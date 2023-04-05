@@ -17,7 +17,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
       videoAssetPath: 'shorts_1.mp4',
       uploadId: '아이디1',
       uploadEmail: 'email1@cj.net',
-      videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기\n\n\n\n\n\n\n\n\nasdasd',
+      videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
       videoLike: 104,
       videoComment: '82',
       tagList: ['콘크리트', '건물', '해시태그'],

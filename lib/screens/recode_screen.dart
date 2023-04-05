@@ -8,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 class RecodeScreen extends StatefulWidget {
   const RecodeScreen({super.key});
   @override
-  _RecodeScreenState createState() => _RecodeScreenState();
+  State<RecodeScreen> createState() => _RecodeScreenState();
 }
 
 class _RecodeScreenState extends State<RecodeScreen> {
