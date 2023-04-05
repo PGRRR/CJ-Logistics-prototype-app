@@ -17,7 +17,6 @@ class _CameraScreenState extends State<CameraScreen> {
   late Future<void> _initializeControllerFuture;
   bool _isFlashOn = false;
   bool isFrontCamera = false;
-  bool _isRecording = false;
 
   @override
   void initState() {
@@ -63,7 +62,7 @@ class _CameraScreenState extends State<CameraScreen> {
 
       // 앱 내부 저장소에 이미지 저장
       final directory = await getApplicationDocumentsDirectory();
-      final imagePath = '${directory.path}/image.jpg';
+      final imagePath = '${directory.path}/${DateTime.now()}.jpg';
       final imageFile = File(imagePath);
       await imageFile.writeAsBytes(File(image.path).readAsBytesSync());
 
@@ -195,24 +194,6 @@ class _CameraScreenState extends State<CameraScreen> {
     });
   }
 
-  Future<void> toggleRecording() async {
-    if (!_isRecording) {
-      // 동영상 모드로 전환
-      await _controller.prepareForVideoRecording();
-
-      // 동영상 촬영 시작
-      await _controller.startVideoRecording();
-    } else {
-      // 동영상 촬영 중지
-      await _controller.stopVideoRecording();
-    }
-
-    // 동영상 촬영 상태 변경
-    setState(() {
-      _isRecording = !_isRecording;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -270,7 +251,7 @@ class _CameraScreenState extends State<CameraScreen> {
                                       width: 60,
                                       height: 5,
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -284,12 +265,15 @@ class _CameraScreenState extends State<CameraScreen> {
                                 children: [
                                   TextButton(
                                     onPressed: () {
+                                      print('test');
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => MainScreen(
-                                                  selectedIndex: 1,
-                                                )),
+                                          builder: (context) => MainScreen(
+                                            selectedIndex: 2,
+                                            isRecordCamera: true,
+                                          ),
+                                        ),
                                       );
                                     },
                                     child: Text(

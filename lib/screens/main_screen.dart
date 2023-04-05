@@ -1,6 +1,6 @@
-import 'package:cj_app/screens/camera_screen.dart';
 import 'package:cj_app/screens/home_screen.dart';
 import 'package:cj_app/screens/new_camera_screen.dart';
+import 'package:cj_app/screens/new_recode_screen.dart';
 import 'package:cj_app/screens/news_screen.dart';
 import 'package:cj_app/screens/shorts_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +10,20 @@ import '../utils/constants.dart';
 class MainScreen extends StatefulWidget {
   final int selectedIndex;
   int? shortsIndex;
-  MainScreen({super.key, required this.selectedIndex, this.shortsIndex});
+  bool? isRecordCamera;
+  MainScreen(
+      {super.key,
+      required this.selectedIndex,
+      this.shortsIndex,
+      this.isRecordCamera});
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  late int? shortsIndex;
+  late int shortsIndex;
+  late bool isRecordCamera;
   final constants = Constants();
   late final List<StatefulWidget> screens;
 
@@ -26,12 +32,13 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _selectedIndex = widget.selectedIndex; // 초기값 설정
     shortsIndex = widget.shortsIndex ?? 0;
+    isRecordCamera = widget.isRecordCamera ?? false;
     screens = [
       const HomeScreen(),
       ShortsScreen(
         shortsIndex: shortsIndex,
       ),
-      NewCameraScreen(),
+      isRecordCamera ? const NewRecordScreen() : const NewCameraScreen(),
       const NewsScreen(),
     ];
   }
@@ -110,7 +117,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               UserAccountsDrawerHeader(
                 accountName: const Text('아이디 님'),
-                accountEmail: const Text('email@cj.net'),
+                accountEmail: const Text(''),
                 currentAccountPicture: const CircleAvatar(
                   backgroundColor: Colors.white,
                   backgroundImage:

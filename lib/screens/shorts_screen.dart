@@ -16,7 +16,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
     const ShortsPlayer(
       videoAssetPath: 'shorts_1.mp4',
       uploadId: '아이디1',
-      uploadEmail: 'email1@cj.net',
+      uploadEmail: '',
       videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
       videoLike: 104,
       videoComment: '82',
@@ -25,7 +25,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
     const ShortsPlayer(
       videoAssetPath: 'shorts_2.mp4',
       uploadId: '아이디2',
-      uploadEmail: 'email2@cj.net',
+      uploadEmail: '',
       videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
       videoLike: 75,
       videoComment: '17',
@@ -34,7 +34,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
     const ShortsPlayer(
       videoAssetPath: 'shorts_3.mp4',
       uploadId: '아이디3',
-      uploadEmail: 'email3@cj.net',
+      uploadEmail: '',
       videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
       videoLike: 84,
       videoComment: '4',
@@ -76,9 +76,8 @@ class _ShortsScreenState extends State<ShortsScreen> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  border:
-                      Border.all(color: Theme.of(context).colorScheme.primary),
-                  color: Colors.white.withOpacity(0.5),
+        
+                  color: Colors.white.withOpacity(0.3),
                 ),
                 child: Padding(
                   padding:

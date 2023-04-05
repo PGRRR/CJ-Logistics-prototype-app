@@ -21,13 +21,13 @@ class _NewsScreenState extends State<NewsScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
-            vertical: 70,
+            vertical: 50,
           ),
           child: Column(
             children: [
               const NewsCard(
                 newsTitle: '오늘의 키워드',
-                cardHeight: 0.4,
+                cardHeight: 0.3,
                 image: 'keyword.png',
                 isBg: true,
                 isShadow: true,
@@ -81,28 +81,28 @@ class _NewsScreenState extends State<NewsScreen> {
                               width: MediaQuery.of(context).size.width * 0.8,
                               clipBehavior: Clip.hardEdge,
                               child: Image.asset(
-                                'assets/images/news_img_1.jpg',
+                                'assets/images/news_img_2.jpg',
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           const NewsTitle(
-                            title: '모두를 위한 단 하나의 배송, CJ대한통운 오네(O-NE)',
-                            date: '2023.03.06',
+                            title: '"주계약자 공동도급제도 개선 방안 세미나" 12일 국회서 열린다',
+                            date: '2023.04.04 17:56',
                             url:
-                                'https://www.cjlogistics.com/ko/newsroom/latest/LT_00000307',
+                                'http://www.koscaj.com/news/articleView.html?idxno=234325',
                           ),
                           const NewsTitle(
-                            title: 'CJ대한통운 일본법인, 품질 환경 안전보건 ISO 인증 획득',
-                            date: '2023.03.29',
+                            title: '“올해 우리나라 1.5% 성장…건설투자는 1.0% 감소”',
+                            date: '2023.04.04 17:56',
                             url:
-                                'https://www.cjlogistics.com/ko/newsroom/news/NR_00001038',
+                                'http://www.koscaj.com/news/articleView.html?idxno=234324',
                           ),
                           const NewsTitle(
-                            title: 'CJ대한통운, 아이지에이웍스와 물류 빅데이터 고도화 MOU',
-                            date: '2023.03.16',
+                            title: '고용부 노동개혁정책관 신설…“노동개혁 완수 모든 역량 집중”',
+                            date: '2023.04.04 17:14',
                             url:
-                                'https://www.cjlogistics.com/ko/newsroom/news/NR_00001036',
+                                'http://www.koscaj.com/news/articleView.html?idxno=234309',
                           ),
                         ],
                       ),
