@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:cj_app/screens/main_screen.dart';
+import 'package:cj_app/widgets/tag.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
@@ -489,6 +490,7 @@ class DisplayPictureScreen extends StatefulWidget {
 
 class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
   late VideoPlayerController _controller;
+  final TextEditingController _textController = TextEditingController();
 
   late Future<void> _initializeVideoPlayerFuture;
   late Color playBtnC = Colors.transparent;
@@ -516,6 +518,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
   void dispose() {
     // 자원을 반환하기 위해 VideoPlayerController를 dispose 시키세요.
     _controller.dispose();
+    _textController.dispose();
 
     super.dispose();
   }
@@ -577,6 +580,51 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
         _controller.play();
       }
     });
+  }
+
+  void _showUploadModal(BuildContext context) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.close),
+                  ),
+                  Text('SHORTS 업로드'),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text('공유'),
+                  ),
+                ],
+              ),
+              Text('내용 입력하기'),
+              TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  hintText: '내용을 입력하세요.',
+                ),
+                onChanged: (value) => print('$value'),
+              ),
+              Text('태그 설정하기'),
+              Tag(tag: '콘크리트'),
+              Tag(tag: '건물'),
+              Tag(tag: '해시태그'),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -673,8 +721,9 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      textDialog('cjenc@cj.net으로 전송되었습니다.');
+                      _showUploadModal(context);
+                      // Navigator.of(context).pop();
+                      // textDialog('cjenc@cj.net으로 전송되었습니다.');
                     },
                     icon: const Icon(
                       Icons.send,
