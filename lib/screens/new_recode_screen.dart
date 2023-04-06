@@ -192,7 +192,7 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                     Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
                             '동영상',
                             style: TextStyle(
@@ -342,7 +342,7 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 120),
+                  padding: const EdgeInsets.only(bottom: 130),
                   child: GestureDetector(
                     onTap: () async {
                       var video;
@@ -450,7 +450,7 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
             Visibility(
               visible: _isRecording,
               child: Padding(
-                padding: const EdgeInsets.only(top: 35),
+                padding: const EdgeInsets.only(top: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -570,6 +570,138 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
     );
   }
 
+  void twoButtonDialog({
+    required String text,
+    btnTxt1,
+    btnTxt2,
+  }) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          backgroundColor: Colors.black,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Column(
+                  children: [
+                    Text(
+                      text,
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.primary),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            deleteDialog('삭제되었습니다.');
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              btnTxt1,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.primary),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              btnTxt2,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void deleteDialog(String text) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return WillPopScope(
+          onWillPop: () async {
+            return false;
+          },
+          child: SimpleDialog(
+            backgroundColor: Colors.black,
+            children: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Column(
+                    children: [
+                      Text(
+                        text,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                              Theme.of(context).colorScheme.primary),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 40),
+                          child: Text(
+                            '확인',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   void _togglePlayPause() {
     setState(() {
       if (_controller.value.isPlaying) {
@@ -584,6 +716,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
 
   void _showUploadModal(BuildContext context) {
     showModalBottomSheet(
+      backgroundColor: Colors.transparent,
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
@@ -591,36 +724,122 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.close),
-                  ),
-                  Text('SHORTS 업로드'),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text('공유'),
-                  ),
-                ],
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(30),
               ),
-              Text('내용 입력하기'),
-              TextField(
-                controller: _textController,
-                decoration: InputDecoration(
-                  hintText: '내용을 입력하세요.',
+              color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        twoButtonDialog(
+                          text: '삭제하시겠습니까?',
+                          btnTxt1: '삭제',
+                          btnTxt2: '취소',
+                        );
+                      },
+                      icon: const Icon(Icons.close),
+                    ),
+                    Text(
+                      'SHORTS 업로드',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: Colors.black,
+                          ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).pop();
+                        textDialog('업로드가 완료되었습니다.');
+                      },
+                      child: const Text(
+                        '공유',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                onChanged: (value) => print('$value'),
-              ),
-              Text('태그 설정하기'),
-              Tag(tag: '콘크리트'),
-              Tag(tag: '건물'),
-              Tag(tag: '해시태그'),
-            ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    '내용 입력하기',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                TextField(
+                  controller: _textController,
+                  decoration: const InputDecoration(
+                    hintText: '내용을 입력하세요.',
+                    contentPadding: EdgeInsets.only(
+                      bottom: 50,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                  ),
+                  textInputAction: TextInputAction.newline,
+                  maxLines: null,
+                  maxLength: 150,
+                  onChanged: (value) => {},
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    '태그 설정하기',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Tag(
+                        tag: '콘크리트',
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      Tag(
+                        tag: '건물',
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      Tag(
+                        tag: '해시태그',
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      Tag(
+                        tag: '+',
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -710,20 +929,18 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      textDialog('저장되었습니다.');
+                      _showUploadModal(context);
                     },
                     icon: const Icon(
-                      Icons.file_download_outlined,
+                      Icons.file_upload_outlined,
                       size: 35,
                       color: Colors.white,
                     ),
                   ),
                   IconButton(
                     onPressed: () {
-                      _showUploadModal(context);
-                      // Navigator.of(context).pop();
-                      // textDialog('cjenc@cj.net으로 전송되었습니다.');
+                      Navigator.of(context).pop();
+                      textDialog('cjenc@cj.net으로 전송되었습니다.');
                     },
                     icon: const Icon(
                       Icons.send,

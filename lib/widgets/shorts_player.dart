@@ -195,11 +195,8 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                           child: Row(
                             children: [
                               for (var tag in widget.tagList)
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: Tag(
-                                    tag: tag,
-                                  ),
+                                Tag(
+                                  tag: tag,
                                 ),
                             ],
                           ),
