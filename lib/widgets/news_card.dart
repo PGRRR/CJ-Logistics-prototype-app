@@ -12,11 +12,12 @@ class NewsCard extends StatelessWidget {
     required this.isBg,
     required this.isShadow,
   });
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(
+        bottom: 10,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,11 +46,12 @@ class NewsCard extends StatelessWidget {
                 ),
               ],
             ),
+            clipBehavior: Clip.hardEdge,
             height: MediaQuery.of(context).size.height * cardHeight,
             width: MediaQuery.of(context).size.width,
             child: Image.asset(
               'assets/images/$image',
-              scale: 0.5,
+              fit: BoxFit.fitHeight,
             ),
           ),
         ],

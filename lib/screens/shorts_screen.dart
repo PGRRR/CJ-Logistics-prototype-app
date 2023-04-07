@@ -52,15 +52,12 @@ class _ShortsScreenState extends State<ShortsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 70),
+        padding: const EdgeInsets.only(top: 25),
         child: Stack(
           children: [
             Container(
               decoration: const BoxDecoration(
                 color: Colors.grey,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
-                ),
               ),
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,

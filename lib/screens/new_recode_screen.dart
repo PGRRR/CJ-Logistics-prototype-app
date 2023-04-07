@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:cj_app/screens/main_screen.dart';
+import 'package:cj_app/widgets/camera_side_btn.dart';
 import 'package:cj_app/widgets/tag.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
@@ -230,45 +231,21 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                         horizontal: 15,
                       ),
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.7,
+                        height: MediaQuery.of(context).size.height * 0.6,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Visibility(
-                              visible: !_isRecording,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.music_note_outlined,
-                                  size: 45,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
+                            CameraSideBtn(
+                              isRecording: _isRecording,
+                              icon: Icons.music_note_outlined,
                             ),
-                            Visibility(
-                              visible: !_isRecording,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.local_movies_outlined,
-                                  size: 45,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
+                            CameraSideBtn(
+                              isRecording: _isRecording,
+                              icon: Icons.local_movies_outlined,
                             ),
-                            Visibility(
-                              visible: !_isRecording,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.text_fields,
-                                  size: 45,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
+                            CameraSideBtn(
+                              isRecording: _isRecording,
+                              icon: Icons.text_fields,
                             ),
                             Visibility(
                               visible: !_isRecording,
@@ -286,22 +263,14 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                                 },
                                 icon: Icon(
                                   _isFlashOn ? Icons.flash_on : Icons.flash_off,
-                                  size: 45,
+                                  size: 35,
                                   color: Colors.white.withOpacity(0.8),
                                 ),
                               ),
                             ),
-                            Visibility(
-                              visible: !_isRecording,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.settings_outlined,
-                                  size: 45,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
+                            CameraSideBtn(
+                              isRecording: _isRecording,
+                              icon: Icons.settings_outlined,
                             ),
                             Visibility(
                               visible: !_isRecording,
@@ -312,10 +281,13 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                                 },
                                 icon: Icon(
                                   Icons.flip_camera_android,
-                                  size: 45,
+                                  size: 35,
                                   color: Colors.white.withOpacity(0.8),
                                 ),
                               ),
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -379,7 +351,6 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                           );
                         }
 
-                        // 동영상 촬영 상태 변경
                         setState(() {
                           _isRecording = !_isRecording;
                         });
@@ -919,6 +890,44 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                           ),
                         ],
                       ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 30,
+                                horizontal: 15,
+                              ),
+                              child: SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.25,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: const [
+                                    CameraSideBtn(
+                                      isRecording: false,
+                                      icon: Icons.music_note_outlined,
+                                    ),
+                                    CameraSideBtn(
+                                      isRecording: false,
+                                      icon: Icons.local_movies_outlined,
+                                    ),
+                                    CameraSideBtn(
+                                      isRecording: false,
+                                      icon: Icons.text_fields,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

@@ -21,7 +21,7 @@ class _NewsScreenState extends State<NewsScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
-            vertical: 50,
+            vertical: 40,
           ),
           child: Column(
             children: [
@@ -33,7 +33,7 @@ class _NewsScreenState extends State<NewsScreen> {
                 isShadow: true,
               ),
               const NewsCard(
-                newsTitle: '오늘의 날씨',
+                newsTitle: '날씨',
                 cardHeight: 0.25,
                 image: 'weather.png',
                 isBg: false,

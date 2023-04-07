@@ -183,7 +183,7 @@ class _NewCameraScreenState extends State<NewCameraScreen> {
                         horizontal: 15,
                       ),
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.35,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -201,7 +201,7 @@ class _NewCameraScreenState extends State<NewCameraScreen> {
                               },
                               icon: Icon(
                                 _isFlashOn ? Icons.flash_on : Icons.flash_off,
-                                size: 45,
+                                size: 35,
                                 color: Colors.white.withOpacity(0.8),
                               ),
                             ),
@@ -210,7 +210,7 @@ class _NewCameraScreenState extends State<NewCameraScreen> {
                               onPressed: () {},
                               icon: Icon(
                                 Icons.settings_outlined,
-                                size: 45,
+                                size: 35,
                                 color: Colors.white.withOpacity(0.8),
                               ),
                             ),
@@ -221,9 +221,12 @@ class _NewCameraScreenState extends State<NewCameraScreen> {
                               },
                               icon: Icon(
                                 Icons.flip_camera_android,
-                                size: 45,
+                                size: 35,
                                 color: Colors.white.withOpacity(0.8),
                               ),
+                            ),
+                            const SizedBox(
+                              height: 5,
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -250,7 +253,7 @@ class _NewCameraScreenState extends State<NewCameraScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 120),
+                  padding: const EdgeInsets.only(bottom: 130),
                   child: GestureDetector(
                     onTap: () async {
                       try {
