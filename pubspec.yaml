@@ -103,8 +103,8 @@ flutter:
   fonts:
     - family: cj
       fonts:
-        - asset: assets/fonts/cj_medium.ttf
-        - asset: assets/fonts/cj_bold.ttf
+        - asset: assets/fonts/cj_new_body_medium.ttf
+        - asset: assets/fonts/cj_new_title_bold.ttf
           weight: 700
 flutter_native_splash:
   image: assets/images/cj_splash_logo.png

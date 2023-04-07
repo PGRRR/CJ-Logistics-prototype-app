@@ -540,6 +540,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                       style: const TextStyle(
                         color: Colors.white,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(
                       height: 15,
@@ -940,7 +941,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      textDialog('cjenc@cj.net으로 전송되었습니다.');
+                      textDialog('cjenc@cj.net\n전송 완료');
                     },
                     icon: const Icon(
                       Icons.send,
