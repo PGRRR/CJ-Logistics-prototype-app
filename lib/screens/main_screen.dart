@@ -79,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
                   builder: (BuildContext context) {
                     return IconButton(
                       onPressed: () {
-                        Scaffold.of(context).openDrawer();
+                        Scaffold.of(context).openEndDrawer();
                       },
                       icon: const Icon(
                         Icons.person_outline,
@@ -91,9 +91,9 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ],
             ),
-      drawer: Drawer(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
+      endDrawer: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.6,
+        child: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -105,72 +105,167 @@ class _MainScreenState extends State<MainScreen> {
                     color: Theme.of(context).colorScheme.primary,
                   ),
                   padding: EdgeInsets.zero,
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'MY PAGE',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontSize: 16,
+                          ),
                     ),
                   ),
                 ),
               ),
-              UserAccountsDrawerHeader(
-                accountName: const Text('아이디 님'),
-                accountEmail: const Text(''),
-                currentAccountPicture: const CircleAvatar(
-                  backgroundColor: Colors.white,
-                  backgroundImage:
-                      AssetImage('assets/images/cj_splash_logo.png'),
-                ),
+              Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
                 ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 25,
+                    horizontal: 20,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 70,
+                        height: 70,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: Image.asset(
+                          'assets/images/cj_splash_logo.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '아이디 님',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontSize: 16,
+                                ),
+                          ),
+                          Text(
+                            'cjenc@cj.net',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              const ListTile(
-                leading: Icon(Icons.attach_money),
-                title: Text('CREDIT'),
-                trailing: Text('50,000'),
+              ListTile(
+                title: Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/award.png',
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    const Text(
+                      'CREDIT',
+                    ),
+                  ],
+                ),
+                trailing: const Text(
+                  '50,000',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                tileColor: Colors.white,
               ),
               ExpansionTile(
-                title: const Text(
+                title: Text(
                   '기본 설정',
-                  style: TextStyle(color: Colors.black),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
                 ),
-                collapsedBackgroundColor: Colors.grey.withOpacity(0.3),
                 children: const [
                   ListTile(
                     title: Text('닉네임 변경'),
+                    tileColor: Colors.white,
                   ),
                   ListTile(
                     title: Text('이메일 변경'),
+                    tileColor: Colors.white,
                   ),
                   ListTile(
                     title: Text('비밀번호 변경'),
+                    tileColor: Colors.white,
                   ),
                   ListTile(
                     title: Text('알림 설정'),
+                    tileColor: Colors.white,
                   ),
                 ],
               ),
               ListTile(
-                title: const Text('스크랩'),
+                title: Text(
+                  '스크랩',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                ),
                 tileColor: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                title: const Text('내가 쓴 게시물'),
+                title: Text(
+                  '내가 쓴 게시물',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                ),
                 tileColor: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                title: const Text('내가 쓴 댓글'),
+                title: Text(
+                  '내가 쓴 댓글',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                ),
                 tileColor: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                title: const Text('문의하기'),
+                title: Text(
+                  '문의하기',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                ),
                 tileColor: Colors.grey.withOpacity(0.3),
               ),
               ListTile(
-                title: const Text('로그아웃'),
+                title: Text(
+                  '로그아웃',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.black,
+                        fontSize: 16,
+                      ),
+                ),
                 tileColor: Colors.grey.withOpacity(0.3),
               ),
             ],

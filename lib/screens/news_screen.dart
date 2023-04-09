@@ -35,7 +35,7 @@ class _NewsScreenState extends State<NewsScreen> {
               const NewsCard(
                 newsTitle: '날씨',
                 cardHeight: 0.25,
-                image: 'weather.png',
+                image: 'weather_2.png',
                 isBg: false,
                 isShadow: false,
               ),

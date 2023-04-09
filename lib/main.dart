@@ -54,6 +54,9 @@ class _AppState extends State<App> {
             color: constants.kCjGray,
           ),
         ),
+        listTileTheme: ListTileThemeData(
+          tileColor: Colors.grey.withOpacity(0.3),
+        ),
       ),
       home: MainScreen(
         selectedIndex: 0,
