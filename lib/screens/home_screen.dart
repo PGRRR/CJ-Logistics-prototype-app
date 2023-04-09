@@ -68,25 +68,100 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 25,
+                      vertical: 8,
                     ),
-                    child: Column(
-                      children: const [
-                        NoticeBody(
-                          title: '어플 안내',
-                          content: 'CJ LOGISTICS 앱 이용방법을 확인하세요.',
+                    child:
+                        // Column(
+                        //   children: const [
+                        //     NoticeBody(
+                        //       title: '어플 안내',
+                        //       content: 'CJ LOGISTICS 앱 이용방법을 확인하세요.',
+                        //     ),
+                        //     NoticeBody(
+                        //       title: '수주 소식',
+                        //       content: '수주 소식을 확인하세요.',
+                        //     ),
+                        //     NoticeBody(
+                        //       title: '경조사 안내',
+                        //       content: '(결혼식) 2023.04.15.토 CJ대한통운 건설부문 인사운영팀',
+                        //     ),
+                        //     NoticeBody(
+                        //       title: '생일 안내',
+                        //       content: '2023.03.10 건설부문 인사운영팀 이병준',
+                        //     ),
+                        //   ],
+                        // ),
+                        Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '어플 안내',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              Text(
+                                '수주 소식',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              Text(
+                                '경조사 안내',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              Text(
+                                '생일 안내',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
+                          ),
                         ),
-                        NoticeBody(
-                          title: '수주 소식',
-                          content: '수주 소식을 확인하세요.',
-                        ),
-                        NoticeBody(
-                          title: '경조사 안내',
-                          content: '(결혼식) 2023.04.15.토 CJ대한통운 건설부문 인사운영팀',
-                        ),
-                        NoticeBody(
-                          title: '생일 안내',
-                          content: '2023.03.10 건설부문 인사운영팀 이병준',
-                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.12,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.55,
+                                child: Text(
+                                  'CJ LOGISTICS 앱 이용방법을 확인하세요.',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.55,
+                                child: Flexible(
+                                  child: Text(
+                                    '수주 소식을 확인하세요.',
+                                    style:
+                                        Theme.of(context).textTheme.bodyMedium,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.55,
+                                child: Text(
+                                  '(결혼식) 2023.04.15.토 CJ대한통운 건설부문 인사운영팀',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.55,
+                                child: Text(
+                                  '2023.03.10 건설부문 인사운영팀',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),

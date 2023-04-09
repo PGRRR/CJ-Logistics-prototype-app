@@ -21,7 +21,7 @@ class _NewsScreenState extends State<NewsScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 20,
-            vertical: 40,
+            vertical: 50,
           ),
           child: Column(
             children: [
