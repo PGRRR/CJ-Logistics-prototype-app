@@ -1,6 +1,5 @@
 import 'package:cj_app/screens/main_screen.dart';
 import 'package:cj_app/utils/constants.dart';
-import 'package:cj_app/widgets/notice_body.dart';
 import 'package:cj_app/widgets/notice_header.dart';
 import 'package:cj_app/widgets/shorts_thumb.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.12,
+                          height: MediaQuery.of(context).size.height * 0.14,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.12,
+                          height: MediaQuery.of(context).size.height * 0.14,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -113,13 +112,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.55,
-                                child: Flexible(
-                                  child: Text(
-                                    '수주 소식을 확인하세요.',
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                child: Text(
+                                  '수주 소식을 확인하세요.',
+                                  style:
+                                      Theme.of(context).textTheme.bodyMedium,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               SizedBox(
@@ -140,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -363,7 +360,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(
                   height: 25,
-                )
+                ),
               ],
             ),
           ),
