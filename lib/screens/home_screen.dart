@@ -70,28 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       horizontal: 25,
                       vertical: 8,
                     ),
-                    child:
-                        // Column(
-                        //   children: const [
-                        //     NoticeBody(
-                        //       title: '어플 안내',
-                        //       content: 'CJ LOGISTICS 앱 이용방법을 확인하세요.',
-                        //     ),
-                        //     NoticeBody(
-                        //       title: '수주 소식',
-                        //       content: '수주 소식을 확인하세요.',
-                        //     ),
-                        //     NoticeBody(
-                        //       title: '경조사 안내',
-                        //       content: '(결혼식) 2023.04.15.토 CJ대한통운 건설부문 인사운영팀',
-                        //     ),
-                        //     NoticeBody(
-                        //       title: '생일 안내',
-                        //       content: '2023.03.10 건설부문 인사운영팀 이병준',
-                        //     ),
-                        //   ],
-                        // ),
-                        Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(

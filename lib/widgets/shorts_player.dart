@@ -94,7 +94,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return Center(
                         child: AspectRatio(
-                          aspectRatio: _controller.value.aspectRatio,
+                          aspectRatio: _controller.value.aspectRatio * 0.93,
                           child: VideoPlayer(_controller),
                         ),
                       );
