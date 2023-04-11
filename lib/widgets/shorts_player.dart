@@ -28,6 +28,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
   late Color playBtnC = Colors.transparent;
   late Color playBtnBgc = Colors.transparent;
   late VideoPlayerController _controller;
+  final TextEditingController _textController = TextEditingController();
   late Future<void> _initializeVideoPlayerFuture;
   late int videoLike;
   bool _isFavClicked = false;
@@ -201,7 +202,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                             ],
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: 80,
                           width: 300,
                           child: Padding(
@@ -247,10 +248,182 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                         const SizedBox(
                           height: 10,
                         ),
-                        const Icon(
-                          Icons.insert_comment_outlined,
-                          size: 35,
-                          color: Colors.white,
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Container(
+                                  padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom,
+                                  ),
+                                  decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(30),
+                                      ),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 5),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            const Padding(
+                                              padding: EdgeInsets.only(
+                                                left: 10,
+                                              ),
+                                              child: Text(
+                                                '댓글',
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                            IconButton(
+                                              padding: EdgeInsets.zero,
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(
+                                                Icons.close,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        TextField(
+                                          controller: _textController,
+                                          decoration: const InputDecoration(
+                                            hintText: '댓글 추가...',
+                                            contentPadding: EdgeInsets.only(
+                                              bottom: 10,
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent),
+                                            ),
+                                          ),
+                                          textInputAction:
+                                              TextInputAction.newline,
+                                          maxLines: null,
+                                          maxLength: 150,
+                                          onChanged: (value) => {},
+                                          style: const TextStyle(
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50,
+                                                width: 50,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: Colors.black
+                                                        .withOpacity(0.3),
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                clipBehavior: Clip.hardEdge,
+                                                child: Image.asset(
+                                                  'assets/images/cj_splash_logo.png',
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: const [
+                                                  Text(
+                                                    '아이디1 님',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text('댓글 내용'),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50,
+                                                width: 50,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: Colors.black
+                                                        .withOpacity(0.3),
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                clipBehavior: Clip.hardEdge,
+                                                child: Image.asset(
+                                                  'assets/images/cj_splash_logo.png',
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: const [
+                                                  Text(
+                                                    '아이디2 님',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text('댓글 내용'),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.insert_comment_outlined,
+                            size: 35,
+                            color: Colors.white,
+                          ),
                         ),
                         Text(
                           widget.videoComment,
