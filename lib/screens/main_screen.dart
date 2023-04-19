@@ -291,7 +291,7 @@ class _MainScreenState extends State<MainScreen> {
               Icons.video_library_outlined,
               size: 35,
             ),
-            label: 'SHORTS',
+            label: 'CLIP',
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -305,7 +305,7 @@ class _MainScreenState extends State<MainScreen> {
               Icons.language_sharp,
               size: 35,
             ),
-            label: 'NEWS',
+            label: 'TREND',
           ),
         ],
         selectedLabelStyle: const TextStyle(

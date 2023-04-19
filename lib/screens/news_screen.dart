@@ -26,18 +26,11 @@ class _NewsScreenState extends State<NewsScreen> {
           child: Column(
             children: [
               const NewsCard(
-                newsTitle: '오늘의 키워드',
+                newsTitle: 'Trend in News',
                 cardHeight: 0.3,
                 image: 'keyword.png',
                 isBg: true,
                 isShadow: true,
-              ),
-              const NewsCard(
-                newsTitle: '날씨',
-                cardHeight: 0.25,
-                image: 'weather_2.png',
-                isBg: false,
-                isShadow: false,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
