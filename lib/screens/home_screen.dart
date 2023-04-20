@@ -18,9 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var thumbList = [
-      'shorts_thumb_1.webp',
-      'shorts_thumb_2.webp',
-      'shorts_thumb_3.webp',
+      'clip_thumb_1.png',
+      'clip_thumb_2.png',
+      'clip_thumb_3.png',
+      'clip_thumb_4.png',
     ];
     return WillPopScope(
       onWillPop: () async {
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: constants.kCjWhite,
         body: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 25,
+            horizontal: 20,
           ),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
                 const NoticeHeader(
                   title: '공지사항',
@@ -114,8 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 width: MediaQuery.of(context).size.width * 0.55,
                                 child: Text(
                                   '수주 소식을 확인하세요.',
-                                  style:
-                                      Theme.of(context).textTheme.bodyMedium,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 25,
                 ),
                 const NoticeHeader(
-                  title: '인기 SHORTS',
+                  title: '인기 CLIP',
                   screenIndex: 1,
                 ),
                 Container(
@@ -190,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 25,
                 ),
                 const NoticeHeader(
-                  title: '뉴스',
+                  title: 'Trend in News',
                   screenIndex: 3,
                 ),
                 Container(
@@ -223,138 +223,160 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.blue.shade700,
-                                        Colors.lightBlue.withOpacity(0.3)
-                                      ],
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                    )),
-                                height: 160,
-                                width: 100,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 15,
-                                  ),
-                                  child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '서울특별시',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w600),
-                                        ),
-                                        Image.asset(
-                                            'assets/images/partly_cloudy_2.png'),
-                                        Text('13°',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge),
-                                        Text(
-                                          '구름 조금',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 12),
-                                        ),
-                                      ]),
-                                ),
-                              ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            const SizedBox(
-                              width: 5,
+                            clipBehavior: Clip.hardEdge,
+                            child: Image.asset(
+                              'assets/images/trend_keyword.png',
+                              fit: BoxFit.fitWidth,
                             ),
-                            SizedBox(
-                              height: 150,
-                              width: MediaQuery.of(context).size.width * 0.45,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '가장 많이 본 뉴스',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(fontWeight: FontWeight.w600),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      '"주계약자 공동도급제도 개선 방안 세미나" 12일 국회서 열린다',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      '“올해 우리나라 1.5% 성장…건설투자는 1.0% 감소”',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      '고용부 노동개혁정책관 신설…“노동개혁 완수 모든 역량 집중”',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      '조달청, 불공정 조달행위 엄정 대응…이행방안 추가 발표',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.blue.shade700,
+                                            Colors.lightBlue.withOpacity(0.3)
+                                          ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        )),
+                                    height: 160,
+                                    width: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 15,
+                                      ),
+                                      child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              '서울특별시',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                            ),
+                                            Image.asset(
+                                                'assets/images/partly_cloudy_2.png'),
+                                            Text('13°',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge),
+                                            Text(
+                                              '구름 조금',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 12),
+                                            ),
+                                          ]),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                SizedBox(
+                                  height: 150,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '가장 많이 본 뉴스',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                                fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          '"주계약자 공동도급제도 개선 방안 세미나" 12일 국회서 열린다',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          '“올해 우리나라 1.5% 성장…건설투자는 1.0% 감소”',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          '고용부 노동개혁정책관 신설…“노동개혁 완수 모든 역량 집중”',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          '조달청, 불공정 조달행위 엄정 대응…이행방안 추가 발표',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

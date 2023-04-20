@@ -182,7 +182,7 @@ class NewsCard extends StatelessWidget {
               },
               child: Image.asset(
                 'assets/images/$image',
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.fitWidth,
               ),
             ),
           ),

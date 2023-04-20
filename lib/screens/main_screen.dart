@@ -51,9 +51,11 @@ class _MainScreenState extends State<MainScreen> {
           ? null
           : AppBar(
               title: Image.asset(
-                'assets/images/cj_logo_kor.png',
-                width: 209.6,
-                height: 47,
+                'assets/images/cj_logo_kor_blo.png',
+                // width: 209.6,
+                width: 124.3,
+                // height: 47,
+                height: 70,
               ),
               centerTitle: true,
               backgroundColor: constants.kCjWhite,

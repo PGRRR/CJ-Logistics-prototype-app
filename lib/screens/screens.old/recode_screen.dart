@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+// import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 
 class RecodeScreen extends StatefulWidget {
@@ -95,8 +95,8 @@ class _RecodeScreenState extends State<RecodeScreen> {
                     IconButton(
                       onPressed: () async {
                         final result =
-                            await ImageGallerySaver.saveFile(image.path);
-                        print("File saved to gallery: $result");
+                            // await ImageGallerySaver.saveFile(image.path);
+                        // print("File saved to gallery: $result");
                         Navigator.of(context).pop();
                         textDialog('저장되었습니다');
                       },

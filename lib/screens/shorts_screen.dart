@@ -14,31 +14,40 @@ class _ShortsScreenState extends State<ShortsScreen> {
 
   final List<Widget> pages = [
     const ShortsPlayer(
-      videoAssetPath: 'shorts_1.mp4',
+      videoAssetPath: 'clip_1.mp4',
       uploadId: '아이디1',
       uploadEmail: '',
-      videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
+      videoDesc: '케미칼앙카 인발 시험',
       videoLike: 104,
       videoComment: '82',
-      tagList: ['콘크리트', '건물', '해시태그'],
+      tagList: ['건축', '케미칼앙카'],
     ),
     const ShortsPlayer(
-      videoAssetPath: 'shorts_2.mp4',
+      videoAssetPath: 'clip_2.mp4',
       uploadId: '아이디2',
       uploadEmail: '',
-      videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
+      videoDesc: '발코니 방통 시 구배 잡는 방법',
       videoLike: 75,
       videoComment: '17',
-      tagList: ['콘크리트', '건물', '해시태그'],
+      tagList: ['건축', '방통', '타설', '발코니'],
     ),
     const ShortsPlayer(
-      videoAssetPath: 'shorts_3.mp4',
+      videoAssetPath: 'clip_3.mp4',
       uploadId: '아이디3',
       uploadEmail: '',
-      videoDesc: 'CJ대한통운 LOIS 포워더스 한 눈에 알아보기',
+      videoDesc: '합벽구간 블록 쌓기',
       videoLike: 84,
       videoComment: '4',
-      tagList: ['콘크리트', '건물', '해시태그'],
+      tagList: ['건축', '블록쌓기'],
+    ),
+    const ShortsPlayer(
+      videoAssetPath: 'clip_4.mov',
+      uploadId: '아이디4',
+      uploadEmail: '',
+      videoDesc: '바닥 미장 순서',
+      videoLike: 84,
+      videoComment: '4',
+      tagList: ['건축', '미장'],
     ),
   ];
 
@@ -73,7 +82,6 @@ class _ShortsScreenState extends State<ShortsScreen> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-        
                   color: Colors.white.withOpacity(0.3),
                 ),
                 child: Padding(

@@ -95,7 +95,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                     if (snapshot.connectionState == ConnectionState.done) {
                       return Center(
                         child: AspectRatio(
-                          aspectRatio: _controller.value.aspectRatio * 0.93,
+                          aspectRatio: _controller.value.aspectRatio * 0.95,
                           child: VideoPlayer(_controller),
                         ),
                       );
@@ -130,7 +130,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.black.withOpacity(0.3)],
+                  colors: [Colors.transparent, Colors.black.withOpacity(0.5)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
@@ -145,75 +145,78 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 15, bottom: 10, left: 5),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: Colors.white,
-                                      width: 3,
-                                      strokeAlign:
-                                          BorderSide.strokeAlignOutside),
-                                ),
-                                width: 60,
-                                height: 60,
-                                clipBehavior: Clip.hardEdge,
-                                child: Image.asset(
-                                  'assets/images/cj_splash_logo.png',
-                                  fit: BoxFit.cover,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 15, bottom: 10, left: 5),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        color: Colors.white,
+                                        width: 3,
+                                        strokeAlign:
+                                            BorderSide.strokeAlignOutside),
+                                  ),
+                                  width: 60,
+                                  height: 60,
+                                  clipBehavior: Clip.hardEdge,
+                                  child: Image.asset(
+                                    'assets/images/cj_splash_logo.png',
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${widget.uploadId} 님',
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Text(
-                                  widget.uploadEmail,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: Row(
-                            children: [
-                              for (var tag in widget.tagList)
-                                Tag(
-                                  tag: tag,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '${widget.uploadId} 님',
+                                    style: Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    widget.uploadEmail,
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 80,
-                          width: 300,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Text(
-                              widget.videoDesc,
-                              style: Theme.of(context).textTheme.titleMedium,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Row(
+                              children: [
+                                for (var tag in widget.tagList)
+                                  Tag(
+                                    tag: tag,
+                                  ),
+                              ],
                             ),
                           ),
-                        )
-                      ],
+                          SizedBox(
+                            height: 40,
+                            width: 300,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                widget.videoDesc,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     Column(
                       children: [
