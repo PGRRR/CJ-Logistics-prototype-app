@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       'clip_thumb_2.png',
       'clip_thumb_3.png',
       'clip_thumb_4.png',
+      'clip_thumb_5.png',
     ];
     return WillPopScope(
       onWillPop: () async {
