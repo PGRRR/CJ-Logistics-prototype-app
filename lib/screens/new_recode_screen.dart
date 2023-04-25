@@ -149,73 +149,76 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MainScreen(
-                                    selectedIndex: 2,
-                                    isRecordCamera: false,
+                Visibility(
+                  visible: !_isRecording,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MainScreen(
+                                      selectedIndex: 2,
+                                      isRecordCamera: false,
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                              child: Text(
+                                '사진',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color:
+                                        Theme.of(context).colorScheme.background),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 3),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Theme.of(context).colorScheme.onBackground,
+                              ),
+                              width: 60,
+                              height: 5,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              '사진',
+                              '동영상',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  color:
-                                      Theme.of(context).colorScheme.background),
+                                fontSize: 16,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 3),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
-                            width: 60,
-                            height: 5,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            '동영상',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Theme.of(context).colorScheme.primary,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 3),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                              width: 60,
+                              height: 5,
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 3),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                            width: 60,
-                            height: 5,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -361,59 +364,90 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                     child: Center(
                       child: Stack(
                         children: [
-                          Center(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 5,
-                                    blurRadius: 7,
-                                    offset: const Offset(0, 3),
-                                  ),
-                                ],
-                              ),
-                              child: const Icon(
-                                Icons.circle,
-                                size: 80,
-                                color: Colors.red,
-                              ),
+                          Transform.translate(
+                            offset: Offset(0, 10),
+                            child: Icon(
+                              Icons.circle,
+                              color: Colors.white,
+                              size: 100,
                             ),
                           ),
                           Transform.translate(
-                            offset: const Offset(0, 10),
-                            child: Center(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Colors.black.withOpacity(0.5),
-                                    width: 2,
-                                    strokeAlign: BorderSide.strokeAlignOutside,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 5,
-                                      blurRadius: 7,
-                                      offset: const Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: const Icon(
-                                  Icons.circle,
-                                  size: 60,
-                                  color: Colors.red,
-                                ),
-                              ),
+                            offset: Offset(28, 37),
+                            child: Icon(
+                              _isRecording ? Icons.square_rounded : Icons.circle,
+                              color: _isRecording ? Colors.black.withOpacity(0.8) : Colors.red,
+                              size: 45,
                             ),
                           ),
                         ],
                       ),
                     ),
+                    // Center(
+                    //   child: Stack(
+                    //     children: [
+                    //       Center(
+                    //         child: Container(
+                    //           decoration: BoxDecoration(
+                    //             color: Colors.red,
+                    //             shape: BoxShape.circle,
+                    //             boxShadow: [
+                    //               BoxShadow(
+                    //                 color: Colors.grey.withOpacity(0.5),
+                    //                 spreadRadius: 5,
+                    //                 blurRadius: 7,
+                    //                 offset: const Offset(0, 3),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //           child: const Icon(
+                    //             Icons.circle,
+                    //             size: 80,
+                    //             color: Colors.red,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       Transform.translate(
+                    //         offset: const Offset(0, 10),
+                    //         child: Center(
+                    //           child: _isRecording
+                    //               ? Transform.translate(
+                    //                 offset:Offset(0, 5) ,
+                    //                 child: Icon(
+                    //                     Icons.square,
+                    //                     size: 50,
+                    //                   ),
+                    //               )
+                    //               : Container(
+                    //                   decoration: BoxDecoration(
+                    //                     color: Colors.red,
+                    //                     shape: BoxShape.circle,
+                    //                     border: Border.all(
+                    //                       color: Colors.black.withOpacity(0.5),
+                    //                       width: 2,
+                    //                       strokeAlign:
+                    //                           BorderSide.strokeAlignOutside,
+                    //                     ),
+                    //                     boxShadow: [
+                    //                       BoxShadow(
+                    //                         color: Colors.grey.withOpacity(0.5),
+                    //                         spreadRadius: 5,
+                    //                         blurRadius: 7,
+                    //                         offset: const Offset(0, 3),
+                    //                       ),
+                    //                     ],
+                    //                   ),
+                    //                   child: const Icon(
+                    //                     Icons.circle,
+                    //                     size: 60,
+                    //                     color: Colors.red,
+                    //                   ),
+                    //                 ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                   ),
                 ),
               ],
@@ -421,7 +455,7 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
             Visibility(
               visible: _isRecording,
               child: Padding(
-                padding: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.only(top: 60),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -723,7 +757,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                       icon: const Icon(Icons.close),
                     ),
                     Text(
-                      'SHORTS 업로드',
+                      'CLIP 업로드',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: Colors.black,
                           ),

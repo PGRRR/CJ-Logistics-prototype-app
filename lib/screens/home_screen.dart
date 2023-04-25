@@ -312,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        '가장 많이 본 뉴스',
+                                        '오늘의 건설 뉴스',
                                         style: Theme.of(context)
                                             .textTheme
                                             .bodyLarge!
