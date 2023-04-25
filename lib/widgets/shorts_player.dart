@@ -130,7 +130,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.transparent, Colors.black.withOpacity(0.5)],
+                  colors: [Colors.transparent, Colors.black.withOpacity(0.3)],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
