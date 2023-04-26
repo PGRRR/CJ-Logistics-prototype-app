@@ -10,9 +10,9 @@ import '../utils/constants.dart';
 
 class MainScreen extends StatefulWidget {
   final int selectedIndex;
-  int? shortsIndex;
-  bool? isRecordCamera;
-  MainScreen(
+  final int? shortsIndex;
+  final bool? isRecordCamera;
+  const MainScreen(
       {super.key,
       required this.selectedIndex,
       this.shortsIndex,
@@ -65,11 +65,9 @@ class _MainScreenState extends State<MainScreen> {
                 builder: (BuildContext context) {
                   return IconButton(
                     onPressed: () {
-                        Navigator.push(
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => AlertScreen()
-                        ),
+                        MaterialPageRoute(builder: (context) => AlertScreen()),
                       );
                     },
                     icon: const Icon(

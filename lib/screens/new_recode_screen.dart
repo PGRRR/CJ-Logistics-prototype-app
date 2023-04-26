@@ -174,8 +174,9 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                                 '사진',
                                 style: TextStyle(
                                     fontSize: 16,
-                                    color:
-                                        Theme.of(context).colorScheme.background),
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .background),
                               ),
                             ),
                           ),
@@ -184,7 +185,8 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: Theme.of(context).colorScheme.onBackground,
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
                               ),
                               width: 60,
                               height: 5,
@@ -365,18 +367,22 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                       child: Stack(
                         children: [
                           Transform.translate(
-                            offset: Offset(0, 10),
-                            child: Icon(
+                            offset: const Offset(0, 10),
+                            child: const Icon(
                               Icons.circle,
                               color: Colors.white,
                               size: 100,
                             ),
                           ),
                           Transform.translate(
-                            offset: Offset(28, 37),
+                            offset: const Offset(28, 37),
                             child: Icon(
-                              _isRecording ? Icons.square_rounded : Icons.circle,
-                              color: _isRecording ? Colors.black.withOpacity(0.8) : Colors.red,
+                              _isRecording
+                                  ? Icons.square_rounded
+                                  : Icons.circle,
+                              color: _isRecording
+                                  ? Colors.black.withOpacity(0.8)
+                                  : Colors.red,
                               size: 45,
                             ),
                           ),

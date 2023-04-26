@@ -33,6 +33,7 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
   late int videoLike;
   bool _isFavClicked = false;
   bool _isBookClicked = false;
+  bool _isCreditClicked = false;
 
   @override
   void initState() {
@@ -76,6 +77,83 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
         _controller.play();
       }
     });
+  }
+
+  void twoButtonDialog({
+    required String text,
+    btnTxt1,
+    btnTxt2,
+  }) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          backgroundColor: Colors.black,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Column(
+                  children: [
+                    Text(
+                      text,
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.primary),
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            setState(() {
+                              _isCreditClicked = !_isCreditClicked;
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              btnTxt1,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.primary),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
+                              btnTxt2,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -179,7 +257,8 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                                 children: [
                                   Text(
                                     '${widget.uploadId} 님',
-                                    style: Theme.of(context).textTheme.titleLarge,
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
                                   ),
                                   const SizedBox(
                                     height: 5,
@@ -431,6 +510,27 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                         Text(
                           widget.videoComment,
                           style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            if (!_isCreditClicked) {
+                              twoButtonDialog(
+                                text: '크레딧 버튼을 누르겠습니까?',
+                                btnTxt1: '확인',
+                                btnTxt2: '취소',
+                              );
+                            }
+                          },
+                          child: Icon(
+                            Icons.copyright,
+                            size: 35,
+                            color: _isCreditClicked
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.white,
+                          ),
                         ),
                         const SizedBox(
                           height: 10,
