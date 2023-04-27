@@ -832,19 +832,23 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Tag(
-                        tag: '콘크리트',
+                        tag: '공사',
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       Tag(
-                        tag: '건물',
+                        tag: '안전',
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       Tag(
-                        tag: '해시태그',
+                        tag: '전기',
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       Tag(
-                        tag: '+',
+                        tag: '설비',
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      Tag(
+                        tag: '공무',
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ],

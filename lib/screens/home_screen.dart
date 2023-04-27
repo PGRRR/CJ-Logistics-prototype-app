@@ -23,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
       'clip_thumb_3.png',
       'clip_thumb_4.png',
       'clip_thumb_5.png',
+      'clip_thumb_6.png',
+      'clip_thumb_7.png',
     ];
     return WillPopScope(
       onWillPop: () async {
@@ -234,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             clipBehavior: Clip.hardEdge,
                             child: Image.asset(
-                              'assets/images/trend_keyword.png',
+                              'assets/images/keyword.png',
                               fit: BoxFit.fitWidth,
                             ),
                           ),

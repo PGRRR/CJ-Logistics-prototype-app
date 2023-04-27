@@ -439,14 +439,14 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                                                     CrossAxisAlignment.start,
                                                 children: const [
                                                   Text(
-                                                    '아이디1 님',
+                                                    '개미',
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Colors.black,
                                                     ),
                                                   ),
-                                                  Text('댓글 내용'),
+                                                  Text('900mm가 아닌가요??'),
                                                 ],
                                               ),
                                             ],
@@ -481,14 +481,98 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                                                     CrossAxisAlignment.start,
                                                 children: const [
                                                   Text(
-                                                    '아이디2 님',
+                                                    '아이디3',
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Colors.black,
                                                     ),
                                                   ),
-                                                  Text('댓글 내용'),
+                                                  Text('800mm가 맞습니다 ㅎㅎ'),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50,
+                                                width: 50,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: Colors.black
+                                                        .withOpacity(0.3),
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                clipBehavior: Clip.hardEdge,
+                                                child: Image.asset(
+                                                  'assets/images/cj_splash_logo.png',
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: const [
+                                                  Text(
+                                                    'SPAD',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text('좋은 자료 ㄳ합니다'),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 50,
+                                                width: 50,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                    color: Colors.black
+                                                        .withOpacity(0.3),
+                                                    width: 2,
+                                                  ),
+                                                ),
+                                                clipBehavior: Clip.hardEdge,
+                                                child: Image.asset(
+                                                  'assets/images/cj_splash_logo.png',
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: const [
+                                                  Text(
+                                                    '대통건썰',
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  Text('벽돌을 엄청 토닥토닥 치시네요'),
                                                 ],
                                               ),
                                             ],
