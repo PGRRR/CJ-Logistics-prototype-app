@@ -1,8 +1,11 @@
+// import 'dart:html';
+
 import 'package:cj_app/screens/alert_screen.dart';
 import 'package:cj_app/screens/home_screen.dart';
 import 'package:cj_app/screens/new_camera_screen.dart';
 import 'package:cj_app/screens/new_recode_screen.dart';
 import 'package:cj_app/screens/news_screen.dart';
+import 'package:cj_app/screens/shop_screen.dart';
 import 'package:cj_app/screens/shorts_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -363,6 +366,12 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               ListTile(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ShopScreen(),
+                  ),
+                ),
                 title: Row(
                   children: [
                     Image.asset(
@@ -372,7 +381,7 @@ class _MainScreenState extends State<MainScreen> {
                       width: 5,
                     ),
                     const Text(
-                      'CREDIT',
+                      'POINT',
                     ),
                   ],
                 ),

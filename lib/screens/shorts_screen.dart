@@ -19,7 +19,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadEmail: '',
       videoDesc: '케미칼앙카 인발 시험',
       videoLike: 104,
-      videoComment: '2',
+      videoComment: '4',
       tagList: ['건축', '케미칼앙카'],
     ),
     const ShortsPlayer(
@@ -28,7 +28,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadEmail: '',
       videoDesc: '발코니 방통 시 구배 잡는 방법',
       videoLike: 75,
-      videoComment: '2',
+      videoComment: '4',
       tagList: ['건축', '방통', '타설', '발코니'],
     ),
     const ShortsPlayer(
@@ -37,7 +37,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadEmail: '',
       videoDesc: '합벽구간 블록 쌓기',
       videoLike: 34,
-      videoComment: '2',
+      videoComment: '4',
       tagList: ['건축', '블록쌓기'],
     ),
     const ShortsPlayer(
@@ -46,7 +46,7 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadEmail: '',
       videoDesc: '바닥 미장 순서',
       videoLike: 40,
-      videoComment: '2',
+      videoComment: '4',
       tagList: ['건축', '미장'],
     ),
     const ShortsPlayer(
@@ -55,8 +55,26 @@ class _ShortsScreenState extends State<ShortsScreen> {
       uploadEmail: '',
       videoDesc: '콘크리트 슬라브 타설',
       videoLike: 54,
-      videoComment: '2',
+      videoComment: '4',
       tagList: ['건축시공', '타설', '바닥슬라브 타설'],
+    ),
+        const ShortsPlayer(
+      videoAssetPath: 'clip_6.mp4',
+      uploadId: '아이디6',
+      uploadEmail: '',
+      videoDesc: '경량벽체 시공',
+      videoLike: 32,
+      videoComment: '4',
+      tagList: ['공사', '수장공사', '경량벽체'],
+    ),
+        const ShortsPlayer(
+      videoAssetPath: 'clip_7.mp4',
+      uploadId: '아이디7',
+      uploadEmail: '',
+      videoDesc: '램프 타설 진행 순서',
+      videoLike: 24,
+      videoComment: '4',
+      tagList: ['건축', '타설', '빵빵이', '조면링', '램프'],
     ),
   ];
 
