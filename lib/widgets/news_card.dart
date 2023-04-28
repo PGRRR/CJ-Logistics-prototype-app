@@ -35,7 +35,7 @@ class NewsCard extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              color: isBg ? const Color(0XFFD9D9D9) : Colors.transparent,
+              color: isBg ? Colors.white : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(

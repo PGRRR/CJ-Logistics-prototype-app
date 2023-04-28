@@ -400,6 +400,10 @@ class _ShortsPlayerState extends State<ShortsPlayer> {
                                               borderSide: BorderSide(
                                                   color: Colors.transparent),
                                             ),
+                                            enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent),
+                                            ),
                                           ),
                                           textInputAction:
                                               TextInputAction.newline,

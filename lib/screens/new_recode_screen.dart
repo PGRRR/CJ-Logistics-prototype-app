@@ -114,7 +114,7 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MainScreen(
+            builder: (context) => const MainScreen(
               selectedIndex: 0,
             ),
           ),
@@ -163,7 +163,7 @@ class _NewRecordScreenState extends State<NewRecordScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => MainScreen(
+                                    builder: (context) => const MainScreen(
                                       selectedIndex: 2,
                                       isRecordCamera: false,
                                     ),
@@ -805,6 +805,9 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.transparent),
                     ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
                   ),
                   textInputAction: TextInputAction.newline,
                   maxLines: null,
@@ -828,28 +831,85 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  child: Column(
                     children: [
-                      Tag(
-                        tag: '공사',
-                        color: Theme.of(context).colorScheme.primary,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: const [
+                          Tag(
+                            tag: '공사',
+                          ),
+                          Tag(
+                            tag: '안전',
+                          ),
+                          Tag(
+                            tag: '전기',
+                          ),
+                          Tag(
+                            tag: '설비',
+                          ),
+                          Tag(
+                            tag: '공무',
+                          ),
+                          Tag(
+                            tag: '보건',
+                          ),
+                        ],
                       ),
-                      Tag(
-                        tag: '안전',
-                        color: Theme.of(context).colorScheme.primary,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Tag(
+                              tag: '소방',
+                            ),
+                            Tag(
+                              tag: '품질',
+                            ),
+                            Tag(
+                              tag: '관리',
+                            ),
+                            Tag(
+                              tag: '골정',
+                            ),
+                            Tag(
+                              tag: '서무',
+                            ),
+                            Tag(
+                              tag: '토목',
+                            ),
+                          ],
+                        ),
                       ),
-                      Tag(
-                        tag: '전기',
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      Tag(
-                        tag: '설비',
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      Tag(
-                        tag: '공무',
-                        color: Theme.of(context).colorScheme.primary,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Tag(
+                            tag: '환경',
+                          ),
+                          const Tag(
+                            tag: '조경',
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey.shade600,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 3),
+                                child: Text(
+                                  '+',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -994,10 +1054,10 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                   IconButton(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      textDialog('cjenc@cj.net\n전송 완료');
+                      textDialog('저장 되었습니다.');
                     },
                     icon: const Icon(
-                      Icons.send,
+                      Icons.file_download_outlined,
                       size: 35,
                       color: Colors.white,
                     ),
