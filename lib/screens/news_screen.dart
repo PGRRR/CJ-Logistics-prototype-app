@@ -27,7 +27,7 @@ class _NewsScreenState extends State<NewsScreen> {
             children: [
               const NewsCard(
                 newsTitle: 'Trend in News',
-                cardHeight: 0.32,
+                cardHeight: 0.3,
                 image: 'keyword.png',
                 isBg: true,
                 isShadow: true,

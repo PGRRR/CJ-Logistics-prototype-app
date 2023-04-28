@@ -1,5 +1,6 @@
 import 'package:cj_app/screens/main_screen.dart';
 import 'package:cj_app/utils/constants.dart';
+import 'package:cj_app/widgets/keyword_card.dart';
 import 'package:cj_app/widgets/notice_header.dart';
 import 'package:cj_app/widgets/shorts_thumb.dart';
 import 'package:flutter/material.dart';
@@ -231,13 +232,49 @@ class _HomeScreenState extends State<HomeScreen> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
+                            height: MediaQuery.of(context).size.height * 0.3,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                             ),
                             clipBehavior: Clip.hardEdge,
-                            child: Image.asset(
-                              'assets/images/keyword.png',
-                              fit: BoxFit.fitWidth,
+                            child: IgnorePointer(
+                              
+                              child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            Text(
+                                              '4월의 키워드',
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                KeywordCard(
+                                                  keyword: '국토교통부',
+                                                ),
+                                                KeywordCard(keyword: '지속가능'),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                KeywordCard(keyword: '통합 심의'),
+                                                KeywordCard(keyword: '건설안전'),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                KeywordCard(keyword: '기술사'),
+                                                KeywordCard(keyword: '우수 디자인'),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                             ),
                           ),
                         ),
