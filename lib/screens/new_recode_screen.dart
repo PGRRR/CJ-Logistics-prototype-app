@@ -502,10 +502,12 @@ class DisplayPictureScreen extends StatefulWidget {
 class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
   late VideoPlayerController _controller;
   final TextEditingController _textController = TextEditingController();
+  final TextEditingController _videoTextController = TextEditingController();
 
   late Future<void> _initializeVideoPlayerFuture;
   late Color playBtnC = Colors.transparent;
   late Color playBtnBgc = Colors.transparent;
+  bool _isText = false;
 
   @override
   void initState() {
@@ -726,6 +728,105 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
     });
   }
 
+  void _showTextModal(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(30),
+              ),
+              color: Colors.white),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        setState(() {
+                          _isText = false;
+                        });
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(Icons.close),
+                    ),
+                    Text(
+                      '자막 생성',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: Colors.black,
+                          ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          _isText = true;
+                        });
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        '추가',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    '내용 입력하기',
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                TextField(
+                  controller: _videoTextController,
+                  decoration: const InputDecoration(
+                    hintText: '내용을 입력하세요.',
+                    contentPadding: EdgeInsets.only(
+                      bottom: 50,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.transparent),
+                    ),
+                  ),
+                  textInputAction: TextInputAction.newline,
+                  maxLines: null,
+                  maxLength: 150,
+                  onChanged: (value) => {},
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   void _showUploadModal(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
@@ -834,7 +935,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                   child: Column(
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
                           Tag(
                             tag: '공사',
@@ -851,16 +952,16 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                           Tag(
                             tag: '공무',
                           ),
-                          Tag(
-                            tag: '보건',
-                          ),
                         ],
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: const [
+                            Tag(
+                              tag: '보건',
+                            ),
                             Tag(
                               tag: '소방',
                             ),
@@ -873,18 +974,18 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                             Tag(
                               tag: '골정',
                             ),
-                            Tag(
-                              tag: '서무',
-                            ),
-                            Tag(
-                              tag: '토목',
-                            ),
                           ],
                         ),
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          const Tag(
+                            tag: '서무',
+                          ),
+                          const Tag(
+                            tag: '토목',
+                          ),
                           const Tag(
                             tag: '환경',
                           ),
@@ -954,12 +1055,12 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
               height: MediaQuery.of(context).size.height * 0.8,
               width: MediaQuery.of(context).size.width,
               clipBehavior: Clip.hardEdge,
-              child: GestureDetector(
-                onTap: _togglePlayPause,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    FutureBuilder(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: _togglePlayPause,
+                    child: FutureBuilder(
                       future: _initializeVideoPlayerFuture,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState == ConnectionState.done) {
@@ -975,65 +1076,87 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                         }
                       },
                     ),
-                    if (!_controller.value.isPlaying)
-                      Stack(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            size: 100,
-                            color: playBtnBgc,
+                  ),
+                  Visibility(
+                    visible: _isText,
+                    child: Transform.translate(
+                      offset: Offset(0, 200),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.8),
+                        ),
+                        height: 30,
+                        child: Center(
+                          child: Text(
+                            _videoTextController.text,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          Positioned(
-                            right: 25,
-                            bottom: 25,
-                            child: Icon(
-                              Icons.play_arrow,
-                              size: 50,
-                              color: playBtnC,
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (!_controller.value.isPlaying)
+                    Stack(
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          size: 100,
+                          color: playBtnBgc,
+                        ),
+                        Positioned(
+                          right: 25,
+                          bottom: 25,
+                          child: Icon(
+                            Icons.play_arrow,
+                            size: 50,
+                            color: playBtnC,
+                          ),
+                        ),
+                      ],
+                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 30,
+                              horizontal: 15,
+                            ),
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.25,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CameraSideBtn(
+                                    isRecording: false,
+                                    icon: Icons.music_note_outlined,
+                                  ),
+                                  CameraSideBtn(
+                                    isRecording: false,
+                                    icon: Icons.local_movies_outlined,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      _showTextModal(context);
+                                    },
+                                    child: CameraSideBtn(
+                                      isRecording: false,
+                                      icon: Icons.text_fields,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 30,
-                                horizontal: 15,
-                              ),
-                              child: SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.25,
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    CameraSideBtn(
-                                      isRecording: false,
-                                      icon: Icons.music_note_outlined,
-                                    ),
-                                    CameraSideBtn(
-                                      isRecording: false,
-                                      icon: Icons.local_movies_outlined,
-                                    ),
-                                    CameraSideBtn(
-                                      isRecording: false,
-                                      icon: Icons.text_fields,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ),
             Padding(

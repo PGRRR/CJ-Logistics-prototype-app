@@ -14,14 +14,10 @@ class CameraSideBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Visibility(
       visible: !_isRecording,
-      child: IconButton(
-        padding: EdgeInsets.zero,
-        onPressed: () {},
-        icon: Icon(
-          icon,
-          size: 35,
-          color: Colors.white.withOpacity(0.8),
-        ),
+      child: Icon(
+        icon,
+        size: 35,
+        color: Colors.white.withOpacity(0.8),
       ),
     );
   }
