@@ -101,5 +101,5 @@ flutter:
         - asset: assets/fonts/cj_new_title_bold.ttf
           weight: 700
 flutter_native_splash:
-  image: assets/images/cj_splash_logo.png
+  image: assets/images/clip_splash_logo.png
   color: "ffffff"
