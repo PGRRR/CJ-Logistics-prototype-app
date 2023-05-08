@@ -103,5 +103,5 @@ flutter:
         fonts:
            - asset: assets/fonts/CJ ONLYONE NEW body Light.ttf
 flutter_native_splash:
-   image: assets/images/cj_splash_logo.png
-   color: "ffffff"
+  image: assets/images/clip_splash_logo.png
+  color: "ffffff"

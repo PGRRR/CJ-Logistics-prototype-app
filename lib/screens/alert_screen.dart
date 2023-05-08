@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class AlertScreen extends StatefulWidget {
   const AlertScreen({super.key});
@@ -25,12 +23,12 @@ class _AlertScreenState extends State<AlertScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: GestureDetector(
                       onTap: () => Navigator.pop(context),
-                      child: Icon(
+                      child: const Icon(
                         Icons.arrow_back,
                       ),
                     ),
                   ),
-                  Text(
+                  const Text(
                     '알림',
                     style: TextStyle(
                       fontSize: 18,
@@ -40,18 +38,18 @@ class _AlertScreenState extends State<AlertScreen> {
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               thickness: 2,
             ),
-            AlertCard(
+            const AlertCard(
               content: '영상이 업로드되었습니다.',
               time: '1분 전',
             ),
-            AlertCard(
+            const AlertCard(
               content: '영상이 저장되었습니다.',
               time: '5분 전',
             ),
-            AlertCard(
+            const AlertCard(
               content: '사진이 저장되었습니다.',
               time: '10분 전',
             ),
@@ -73,7 +71,7 @@ class AlertCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      key: Key(''),
+      key: const Key(''),
       onDismissed: (direction) {},
       child: Column(
         children: [
@@ -101,12 +99,12 @@ class AlertCard extends StatelessWidget {
                   children: [
                     Text(
                       content,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(time),
@@ -115,7 +113,7 @@ class AlertCard extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             thickness: 1,
           ),
         ],
