@@ -1089,7 +1089,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                         child: Center(
                           child: Text(
                             _videoTextController.text,
-                            style: Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(fontFamily: 'cj_onlyone'),
                           ),
                         ),
                       ),
