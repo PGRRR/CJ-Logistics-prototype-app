@@ -13,7 +13,7 @@
 
 ## 📋 프로젝트 특징
 
-> 프로젝트 명 : CJ-Logistics-prototype-app
+> 프로젝트 명 : 사내 정보 공유 앱 (CLIP)
 
 - 사내 정보 공유 및 외부 정보 습득 앱
 - CJ Value UP 프로젝트 외주 제작 앱
