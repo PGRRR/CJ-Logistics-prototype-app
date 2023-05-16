@@ -1,4 +1,4 @@
-#  CJ-Logistics-prototype-app
+#  📎 사내 정보 공유 앱 (CLIP)
 
 [![Flutter](https://img.shields.io/badge/Flutter-white.svg?style=for-the-badge&logo=Flutter&logoColor=02569B)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/dart-111B26.svg?style=for-the-badge&logo=dart&logoColor=0175C2)](https://dart.dev/)
@@ -11,17 +11,26 @@
 [![Github](https://img.shields.io/badge/github-black.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
 [![Figma](https://img.shields.io/badge/Figma-1E1E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)](https://www.figma.com/)
 
-## 📋 개요
+## 📋 프로젝트 특징
 
 > 프로젝트 명 : CJ-Logistics-prototype-app
 
--  사내 정보 공유 앱
--  외주 제작 앱
+- 사내 정보 공유 및 외부 정보 습득 앱
+- CJ Value UP 프로젝트 외주 제작 앱
 
-## 🏗️ 개발 인원 및 기간
+## 🚀 프로젝트 목표
 
--  개발 기간 : 2023/04/01 ~ 2022/04/10 (9일간)
--  개발 인원 : App 1인 개발
+- 순정 카메라가 아닌 자체 카메라 기능 구현
+- 회사 CI 규정에 맞게 디자인
+
+## 🏗️ 프로젝트 규모
+
+-  개발 및 유지 보수 기간
+    -  2023/04/01 ~ 2022/05/03 (33일간)
+    -  총 86시간
+    -  1인 개발
+-  Code
+    - 총 코드 라인 수:  4,113 라인  
 
 ## 📝 구현 기능 명세
 
