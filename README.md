@@ -1,4 +1,5 @@
-#  📎 사내 정보 공유 앱 (CLIP)
+#  📎 사내 정보 공유 앱 (CLIP) <img src="https://github.com/PGRRR/CJ-Logistics-prototype-app/assets/82517133/5d0578ac-1910-4b37-91a9-afcb8a327f9c" width="45" height="45"/>
+
 
 [![Flutter](https://img.shields.io/badge/Flutter-white.svg?style=for-the-badge&logo=Flutter&logoColor=02569B)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/dart-111B26.svg?style=for-the-badge&logo=dart&logoColor=0175C2)](https://dart.dev/)
@@ -11,9 +12,9 @@
 [![Github](https://img.shields.io/badge/github-black.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
 [![Figma](https://img.shields.io/badge/Figma-1E1E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)](https://www.figma.com/)
 
-## 📋 프로젝트 특징
+## 📋 프로젝트 특징 
 
-> 프로젝트 명 : 사내 정보 공유 앱 (CLIP)
+> 프로젝트 명 : 사내 정보 공유 앱 (CLIP) 
 
 - 사내 정보 공유 및 외부 정보 습득 앱
 - CJ Value UP 프로젝트 외주 제작 앱
